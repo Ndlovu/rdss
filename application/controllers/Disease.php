@@ -2,6 +2,11 @@
 
 class Disease extends CI_Controller
 {
+    private $data;
+    protected $before_filter = array(
+        'action' => '_check_if_logged_in',
+        'except' => array()
+    );
     /**
 	 * Index Page for this controller.
 	 *

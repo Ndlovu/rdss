@@ -21,18 +21,24 @@ class Ussd extends CI_Controller
             if ($session_is_present == false) //new session
             {
                 $this->session_model->new_session($session_id, $phone_number);
-                $response = "CON Please select your option: \n 1 - Register \n 2 - Submit alert";
+                $response = "CON Please select your option \n";
+                $response = "1. Register \n";
+                $response = "2. Submit alert";
+
             } else //session exists
             {
 
-                if ($session_is_present->input_step == 1) //get domain name
+                if ($session_is_present->input_step == 1) //get the selected option
                 {               
-                    $text = strtolower($text);
+                    /*$text = strtolower($text);*/
                     $text = trim($text);
                     $text = str_replace(" ", null, $text);
                   
                     if ($text==1) {
-                    $response = "CON Please enter your name,email, and national ID,";
+                    $response = "CON Please enter your name,national ID,e-mail";
+                    }
+                    else{
+                        //enter alternative texts here
                     }
 
 

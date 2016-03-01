@@ -43,9 +43,10 @@ class Register extends CI_Controller {
         $password=$this->input->post('password');
         $email=$this->input->post('email');
         $role=0;
+        $user_id = uniqid();
         $this->load->model('user_model');
 
-        if($this->user_model->new_user($names,$phone_number,$national_id,$password,$email,$role))
+        if($this->user_model->new_user($names,$phone_number,$national_id,$password,$email,$role, $user_id))
         {
             $data['flash_message']=TRUE;
             redirect(base_url());

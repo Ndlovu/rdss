@@ -23,7 +23,6 @@ class Login extends CI_Controller
         $this->load->view('login');
     }
 
-
     function __encrip_password($password)
     {
         return md5($password);
@@ -40,6 +39,7 @@ class Login extends CI_Controller
         $password = $this->__encrip_password($this->input->post('password'));
         $is_valid = $this->user_model->validate($email, $password);
 
+
         if ($is_valid) {
             $role = $is_valid[0]['role'];
             $user_id = $is_valid[0]['user_id'];
@@ -53,18 +53,18 @@ class Login extends CI_Controller
                 'names' => $names
             );
             $this->session->set_userdata($data);
-
-
             redirect(base_url());
 
-
+         
         } else // incorrect username or password
         {
-            redirect(base_url());
-            //$data['error_message'] = TRUE;
-            //$this->load->view('login', $data);
+            redirect('login');
+     
+            /*$data['error_message'] = TRUE;
+            $this->load->view('login', $data);*/
+            /*$this->load->view('login');*/
         }
-    }
+        }
 
 
 

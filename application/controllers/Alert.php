@@ -2,6 +2,12 @@
 
 class Alert extends CI_Controller
 {
+    private $data;
+    protected $before_filter = array(
+        'action' => '_check_if_logged_in',
+        'except' => array()
+    );
+
     /**
 	 * Index Page for this controller.
 	 *
@@ -51,6 +57,7 @@ class Alert extends CI_Controller
         $user_id="4323wrw234";
                
         $alert = array(
+            'date'=>$this->input->post('date'),
             'age'=>$this->input->post('age'),
             'sex'=>$this->input->post('sex'),
             'status'=>$this->input->post('status'),
@@ -77,6 +84,7 @@ function update_alert() {
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
         $user_id="4323wrw234";
         $data = array(
+            'date'=>$this->input->post('date'),
             'age'=>$this->input->post('age'),
             'sex'=>$this->input->post('sex'),
             'status'=>$this->input->post('status'),

@@ -2,6 +2,14 @@
 
 class Sub_county extends CI_Controller
 {
+     private $data;
+    protected $before_filter = array(
+        'action' => '_check_if_logged_in',
+        'except' => array()
+    );
+
+
+
    	function __construct()
     {
         parent::__construct();

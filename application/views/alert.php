@@ -102,6 +102,10 @@
                                     <input type="text" required name="status" class="form-control" value="<?php echo $alert_object->status; ?>">
                                 </div>
 
+                            <div class="form-group"><label>Date:</label>
+                                <input type="text" required name="expected_date_delivery" class="form-control" value="<?php echo $alert_object->date; ?>"></div>
+
+
                                         </div>
                                         <div class="modal-footer">
                                              <button type="submit" class="btn btn-primary">save changes</button>
@@ -179,6 +183,23 @@
                                  <div class="form-group"><label>Status :</label>
                                     <input type="text" required name="status" class="form-control" placeholder="Status">
                                 </div>
+
+                               <!--   <div class="form-group" id="data_1">
+                                <label class="font-noraml">Date</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" placeholder="Date">
+                                </div>
+                            </div> -->
+
+                             <div class="form-group">
+                            <label>Date:</label>
+                            <input id="txtDate" type="text" required name="date" class="form-control"  data-mask="9999-99-99" placeholder="Date">
+                            <span class="help-block">yyyy-mm-dd</span>
+
+                            <!--<input type="text"  class="form-control" >-->
+                        </div>
+
 
 
                                         </div>

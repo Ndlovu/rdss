@@ -11,21 +11,17 @@ class User_model extends CI_Model
      */
     function validate($email, $password)
     {
+
         $this->db->where('email', $email);
         $this->db->where('password', $password);
         $query = $this->db->get('user_table');
-
-        if ($query->num_rows == 1) {
-            return $query->result_array();
-        }
-        else{
-            return null;
-        }
+        $result = $query->result_array();
+        return $result;   
     }
 
     //create_member
 
-    function new_user($names,$phone_number,$national_id,$password,$email,$role=0)
+    function new_user($names,$phone_number,$national_id,$password,$email,$role=0, $user_id)
     {
 
         $this->db->where('email', $email);
@@ -44,7 +40,8 @@ class User_model extends CI_Model
                 'national_id' => $national_id,
                 'password' => md5($password),
                 'email' => $email,
-                'role'=>$role
+                'role'=>$role,
+                'user_id'=>$user_id
             );
             $insert = $this->db->insert('user_table', $new_user_insert_data);
             return $insert;
