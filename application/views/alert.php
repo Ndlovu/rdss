@@ -3,7 +3,7 @@
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Alerts</h2>
+            <h2>disease incidents</h2>
 
         </div>
         <div class="col-sm-8">
@@ -18,7 +18,7 @@
        <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Faciity</h5>
+                        <h5>Confirmed reports</h5>
                         <div class="ibox-content">
 
                         <table class="table">
@@ -30,6 +30,7 @@
                                     <th>Age</th>
                                     <th>Sex</th>
                                     <th>Status</th>
+                                    <th>Date</th>
                                     
                                     <th>Edit</th>
                                     </tr>
@@ -55,6 +56,7 @@
                                     <td><?php echo $alert_object->age; ?></td>
                                     <td><?php echo $alert_object->sex; ?></td>
                                     <td><?php echo $alert_object->status; ?></td>
+                                    <td><?php echo $alert_object->date; ?></td>
                             <td data-toggle="modal" data-target="#myModal_<?php echo $alert_object->alert_id; ?>"><i class="fa fa-wrench"></i>
                        <div class="modal inmodal"  id="myModal_<?php echo $alert_object->alert_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                <div class="modal-dialog">
@@ -103,7 +105,7 @@
                                 </div>
 
                             <div class="form-group"><label>Date:</label>
-                                <input type="text" required name="expected_date_delivery" class="form-control" value="<?php echo $alert_object->date; ?>"></div>
+                                <input type="text" required name="date" class="form-control" value="<?php echo $alert_object->date; ?>"></div>
 
 
                                         </div>

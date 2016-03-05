@@ -5,29 +5,24 @@ class Ussd extends CI_Controller
     public function index()
     {
         $session_id = $this->input->post('sessionId');
+        $service_code =$serviceCode = $_POST["serviceCode"];
         $phone_number = $this->input->post('phoneNumber');
         $text = $this->input->post('text');
 
        
         $this->load->model('session_model');
-
-        if (1==5) {
-
-            $response = "END You reached your daily limit please try again after 24 hrs.";
-        } else //limit not exceeded
-        {
-            $session_is_present = $this->session_model->check_if_session_exists($session_id, $phone_number);
+        $session_is_present = $this->session_model->check_if_session_exists($session_id, $phone_number);
 
             if ($session_is_present == false) //new session
             {
                 $this->session_model->new_session($session_id, $phone_number);
                 $response = "CON Please select your option \n";
                 $response = "1. Register \n";
-                $response = "2. Submit alert";
+                $response = "2. Submit alert \n";
 
-            } else //session exists
-            {
-
+            } 
+            else
+            {//session exists
                 if ($session_is_present->input_step == 1) //get the selected option
                 {               
                     /*$text = strtolower($text);*/
@@ -35,10 +30,10 @@ class Ussd extends CI_Controller
                     $text = str_replace(" ", null, $text);
                   
                     if ($text==1) {
-                    $response = "CON Please enter your name,national ID,e-mail";
+                    $response = "CON Enter your name,national ID,e-mail.  format: Dennis Ongati,21212121,kevinwafula@gmail.com. ";
                     }
-                    else{
-                        //enter alternative texts here
+                    else if ($text==2){
+                        $response = "CON Enter your mfl-code,disease-code,age, sex, status. Format: PGH, CHL, 10, M, Alive. ";
                     }
 
 
@@ -70,6 +65,7 @@ class Ussd extends CI_Controller
                         {
 
 
+
                             $order = 1;//post_order($session_id, $client);
 
                             if ($order == false) //error in placing order
@@ -78,7 +74,7 @@ class Ussd extends CI_Controller
 
                             } else {
 
-                                $response = "END Your order has been successfully placed for the domain: " . $this->session_model->get_domain_name($session_id) . ". the cost of the domain name is " . $this->session_model->get_domain_price($session_id) . "";
+                                $response = "END Successful. Alert ID: " . $this->session_model->get_domain_name($session_id) . ". the cost of the domain name is " . $this->session_model->get_domain_price($session_id) . "";
 
                             }
                         }
@@ -86,59 +82,7 @@ class Ussd extends CI_Controller
                 }
             }
 
-        }
-
-
-
     }
 
 
 }
-
-
-
-
-/*    <?php
-    // Reads the variables sent via POST from our gateway
-    $sessionId   = $_POST["sessionId"];
-    $serviceCode = $_POST["serviceCode"];
-    $phoneNumber = $_POST["phoneNumber"];
-    $text        = $_POST["text"];
-    if ( $text == "" ) {
-         // This is the first request. Note how we start the response with CON
-         $response  = "CON What would you want to check \n";
-         $response .= "1. My Account \n";
-         $response .= "2. My phone number";
-    }
-    else if ( $text == "1" ) {
-      // Business logic for first level response
-      $response = "CON Choose account information you want to view \n";
-      $response .= "1. Account number \n";
-      $response .= "2. Account balance";
-      
-     }
-     else if($text == "2") {
-      // Business logic for first level response
-      $phoneNumber  = "+254711XXXYYY";
-      // This is a terminal request. Note how we start the response with END
-      $response = "END Your phone number is $phoneNumber";
-     }
-     else if($text == "1*1") {
-      // This is a second level response where the user selected 1 in the first instance
-      $accountNumber  = "ACC1001";
-      // This is a terminal request. Note how we start the response with END
-      $response = "END Your account number is $accountNumber";
-     }
-        
-     else if ( $text == "1*2" ) {
-      
-         // This is a second level response where the user selected 1 in the first instance
-         $balance  = "KES 1,000";
-         // This is a terminal request. Note how we start the response with END
-         $response = "END Your balance is $balance";
-    }
-    // Print the response onto the page so that our gateway can read it
-    header('Content-type: text/plain');
-    echo $response;
-    // DONE!!!
-    ?>*/

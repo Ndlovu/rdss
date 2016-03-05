@@ -47,7 +47,7 @@ class Session_model extends CI_Model
     }
 
 
-    public function save_domain($session_id, $domain_name)
+    public function save_alert($session_id, $alert)
     {
         $data = array(
             'domain_name' => $domain_name,
@@ -69,13 +69,13 @@ class Session_model extends CI_Model
         $this->db->update('sessions', $data);
     }
 
-    public function get_domain_name($session_id)
+    public function get_alert_id($session_id)
     {
         $this->db->where('session_id', $session_id);
         $result = $this->db->get('sessions');
 
         if ($result->num_rows() > 0) {
-            return $result->result()[0]->domain_name;
+            return $result->result()[0]->alert_id;
         } else {
             return null;
         }
