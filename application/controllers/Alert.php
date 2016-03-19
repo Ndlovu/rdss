@@ -33,6 +33,7 @@ class Alert extends CI_Controller
         $this->load->model('disease_model');
         $this->load->model('facility_model');
         $this->load->model('sub_county_model');
+        $this->load->model('county_model');
     }
 
     public function index()
@@ -45,6 +46,7 @@ class Alert extends CI_Controller
         $data['disease']=$this->disease_model->show_diseases();
         $data['facility']=$this->facility_model->show_facilities();
         $data['sub_county']=$this->sub_county_model->show_sub_counties();
+        $data['county'] = $this->county_model->show_counties();
         $this->load->view('alert',$data);
 
     }
@@ -109,7 +111,43 @@ function update_alert() {
 
         $this->show_alerts();
     }
+
+
+
+
 }
 
+
+
+
+/*function get_by_id()
+    {
+        $pending_shipment_id = $_GET['pending_shipment_id'];
+        $data=$this->stocks_model->show_pending_shipment_by_id($pending_shipment_id);
+        
+        $data_array = array();
+        foreach($data as $myvalue){
+        $commodity_id=$myvalue->commodity_id;
+        $funding_agency_id=$myvalue->funding_agency_id;
+        $funding_agency_name=$this->stocks_model->get_funding_agency_name($funding_agency_id);
+        $commodity_name= $this->stocks_model->get_commodity_id_with_the_given_id($commodity_id);
+       
+        $data_array[] = $funding_agency_id;
+        $data_array[] = $funding_agency_name;
+        $data_array[] = $commodity_id;
+        $data_array[] = $commodity_name;
+        //echo($funding_agency_name." ".$commodity_name);
+        }
+        /*NOTES:
+            0 - funding agency id
+            1 - funding agency name
+            2 - commodity id
+            3 - commodity name
+    
+        $return = json_encode($data_array);
+        echo $return;
+        
+    }
+*/
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

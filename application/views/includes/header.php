@@ -1,6 +1,6 @@
 <?php require_once("top_includes.php"); ?>
 
-<body>
+<body onload="load()">
 <div id="wrapper">
 <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">

@@ -18,6 +18,7 @@
     <link href="<?php echo(base_url()); ?>assets/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <!-- Gritter -->
     <link href="<?php echo(base_url()); ?>assets/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/js/mshcustom/google_maps_hre.js" rel="stylesheet">
     <!-- Toastr style -->
     <link href="<?php echo(base_url()); ?>assets/css/plugins/toastr/toastr.min.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/plugins/iCheck/custom.css" rel="stylesheet">
@@ -52,9 +53,10 @@
     <link href="<?php echo(base_url()); ?>assets/css/plugins/blueimp/css/blueimp-gallery.min.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/plugins/steps/jquery.steps.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/animate.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/css/custom.css" rel="stylesheet">
     <link href="<?php echo(base_url()); ?>assets/css/style.css" rel="stylesheet">
 
-
+  
 
     <!-- date-picker -->
     

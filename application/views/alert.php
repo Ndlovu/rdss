@@ -1,5 +1,35 @@
 <?php require_once("includes/header.php"); ?>
 
+<script>
+  function myFunction() 
+  {
+      var base_url = "<?= base_url();?>";
+      var item = document.getElementById("countyid");
+      var itemIndex = item.selectedIndex;
+      var itemSelected = item[itemIndex].value;
+     var url = base_url+"alert/get_sub_county_by_id";
+     $.getJSON
+      (
+        url,
+        {county_name:itemSelected},
+        function(dataReceived)
+        {
+          /*NOTES:
+            0 - funding agency id
+            1 - funding agency name
+            2 - commodity id
+            3 - commodity name
+          */
+          $("#selected_sub_county").html(dataReceived[1]);
+         
+        }
+
+      );
+  }
+  
+</script>
+
+
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
@@ -38,9 +68,37 @@
                             </thead>
 
                             <tbody>
-                            <?php $count=1; ?>
-                            <?php foreach ($alert as $alert_object): ?>
+                            <?php $count=1;
+                            $county_name = NULL;
+                            $sub_county_name = NULL;
+                            $facility_name= NULL;
 
+
+                             ?>
+
+                            <?php foreach ($alert as $alert_object): 
+
+
+                           foreach($county as $county_location){
+                            if ($alert_object->county_id == $county_location->county_id) {
+                                $county_name = $county_location->county_name;
+                            }
+                           }
+
+                           foreach ($facility as $fclty) {
+                                        if ($alert_object->facility_id==$fclty->facility_id) {
+                                            $facility_name = $fclty->facility_name;
+                                        }
+                                    }
+
+                            foreach ($sub_county as $sub_location) {
+                                if ($alert_object->sub_county_id == $sub_location->sub_county_id) {
+                                    $sub_county_name= $sub_location->sub_county_name;
+                                }
+                            }
+
+
+                            ?>
                                 <tr>
                                     <td><?php echo $count; ?></td>
                                     <td><?php foreach ($disease as $disease_object) {
@@ -48,11 +106,7 @@
                                             echo $disease_object->disease_name;
                                         }
                                     }?></td>
-                                    <td><?php foreach ($facility as $fclty) {
-                                        if ($alert_object->facility_id==$fclty->facility_id) {
-                                            echo $fclty->facility_name;
-                                        }
-                                    } ?></td>
+                                    <td><?php echo $facility_name. ",\n". $sub_county_name . ".\n". $county_name; ?></td>
                                     <td><?php echo $alert_object->age; ?></td>
                                     <td><?php echo $alert_object->sex; ?></td>
                                     <td><?php echo $alert_object->status; ?></td>
@@ -72,7 +126,9 @@
                  
 
                                        <div class="form-group"><input type="hidden" name="alert_id" value="<?php echo $alert_object->alert_id; ?>" class="form-control"></div>
-                                       <div class="form-group"><label>disease: </label> <select name="disease_name"class="form-control">
+                                       <div class="form-group"><label>Disease: </label> <select name="disease_name"class="form-control">
+                                       <option value = "">[Select]</option>
+
                                         <?php foreach ($disease as $disease_object): ?>
                                         <option name="disease_name" <?php if ($alert_object->disease_id==$disease_object->disease_id) {echo "Selected";
                                                 } ?> ><?php  echo $disease_object->disease_name;?>
@@ -80,11 +136,36 @@
                                         <?php endforeach;?>
                                         </select>
                                         </div>
+            
+                                        <div class="form-group"><label>County: </label>
+                        <select name="county_name" class="form-control" id="countyid" onchange = "javascript:myFunction();">
 
+                                        <option value = "">[Select]</option>
 
-                                      
+                                        <?php foreach ($county as $county_object): ?>
+                                        <option name="county_name" value="<?php $alert_object->county_id; ?>" <?php if ($alert_object->county_id==$county_object->county_id) {echo "Selected";
+                                                }?> ><?php  echo $county_object->county_name;?>
+                                                </option>
+                                        <?php endforeach;?>
+                                        </select></div> 
                                        
-                                 <div class="form-group"><label>facility: </label><select name="facility_name" class="form-control">
+                                         <div class="form-group"><label>Sub county: </label>
+                                        <select name="sub_county_name" class="form-control">
+                                        <option value = "">[Select]</option>
+
+                                        <?php foreach ($sub_county as $sub_county_object): ?>
+
+                                        <option name="sub_county_name" <?php if ($alert_object->sub_county_id==$sub_county_object->sub_county_id) {echo "Selected";
+                                                }?> ><?php  echo $sub_county_object->sub_county_name;?>
+                                                </option>
+                                        <?php endforeach;?>
+                                        </select></div>
+
+
+
+                              <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
+                            <option value = "">[Select]</option>
+
                             <?php foreach ($facility as $facility_object): ?>
                             <option name="facility_name" <?php if ($alert_object->facility_id==$facility_object->facility_id) {echo "Selected";
                                     }?> ><?php  echo $facility_object->facility_name;?>
@@ -138,8 +219,6 @@
 
     </div>
 </div>
-
-
 <div class="modal inmodal" id="add_alert" tabindex="-1" role="dialog" aria-hidden="true">
                                <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
@@ -164,7 +243,26 @@
                                         </div>
 
 
-                                             <div class="form-group"><label>Facility: </label>
+                                             <div class="form-group"><label>County: </label>
+                                        <select name="county_name" class="form-control">
+                                        <?php foreach ($county as $county_object): ?>
+                                        <option name="county_name" <?php if ($alert_object->county_id==$county_object->county_id) {echo "Selected";
+                                                }?> ><?php  echo $county_object->county_name;?>
+                                                </option>
+                                        <?php endforeach;?>
+                                        </select></div>
+
+                                         <div class="form-group"><label>Sub county: </label>
+                                        <select name="sub_county_name" class="form-control">
+                                        <?php foreach ($sub_county as $sub_county_object): ?>
+                                        <option name="sub_county_name" <?php if ($alert_object->sub_county_id==$sub_county_object->sub_county_id) {echo "Selected";
+                                                }?> ><?php  echo $sub_county_object->sub_county_name;?>
+                                                </option>
+                                        <?php endforeach;?>
+                                        </select></div>
+
+
+                                         <div class="form-group"><label>Facility: </label>
                                         <select name="facility_name" class="form-control">
                                         <?php foreach ($facility as $facility_object): ?>
                                         <option name="facility_name" <?php if ($alert_object->facility_id==$facility_object->facility_id) {echo "Selected";
@@ -172,6 +270,7 @@
                                                 </option>
                                         <?php endforeach;?>
                                         </select></div>
+
 
                                         <div class="form-group"><label>Age :</label>
                                         <input type="text" required name="age" class="form-control" placeholder="Age">

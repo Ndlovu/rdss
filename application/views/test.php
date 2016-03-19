@@ -1,4 +1,10 @@
-<?php
-echo ;
- ?>
+<?php 
 
+
+
+
+
+var_dump($content);
+
+
+?>

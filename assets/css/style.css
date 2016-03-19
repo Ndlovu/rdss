@@ -6442,3 +6442,13 @@ body.skin-3 {
     display: none;
   }
 }
+
+.hre-googlemap{
+  height: 450px;
+
+}
+
+#map1 {
+        width: 100%;
+        height: 600px;
+      }
