@@ -30,23 +30,6 @@ class Welcome_model extends CI_Model
 
 
 
-/*
-
-
-if ($_GET['action'] == 'listpoints') { 
-  $query ="SELECT * FROM locations"; 
-  $result = map_query($query); 
-  $points = array();
-  while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) { 
-    array_push($points, array('name' =>$row['name'], 'lat' =>$row['lat'], 'lng' =>$row['lng'])); 
-  } 
-  echo json_encode(array("Locations"=>$points)); 
-  exit; 
-}
-
-*/
-
-
 
 
 
