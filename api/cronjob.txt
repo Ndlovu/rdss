@@ -1,0 +1,3 @@
+# Cronjob to Execute to Download All Data Elements
+# crontab -e
+0 * * * * /usr/bin/php /var/www/html/msh/api/download_dataElements.php

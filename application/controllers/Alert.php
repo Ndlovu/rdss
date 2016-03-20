@@ -57,6 +57,15 @@ class Alert extends CI_Controller
         $facility_id=$this->facility_model->get_facility_id_given_name($facility_name);
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
         $user_id="4323wrw234";
+        $county_name = $this->input->post('county_name');
+        $county_id = $this->county_model->get_county_id_given_name($county_name);
+
+        $sub_county_name = $this->input->post('sub_county_name');
+        $sub_county_id = $this->sub_county_model->get_sub_county_id_given_name($sub_county_name);
+
+        $facility_name = $this->input->post('facility_name');
+        $facility_id = $this->facility_model->get_facility_id_given_name($facility_name);
+
                
         $alert = array(
             'date'=>$this->input->post('date'),
@@ -66,7 +75,10 @@ class Alert extends CI_Controller
             'facility_id'=>$facility_id,
             'disease_id'=>$disease_id,
             'user_id'=>$user_id,
-             'alert_id'=>uniqid()
+             'alert_id'=>uniqid(),
+             'facility_id'=>$facility_id,
+             'sub_county_id'=>$sub_county_id,
+             'county_id'=>$county_id
             
         );
 
@@ -76,6 +88,7 @@ class Alert extends CI_Controller
 
 
     }
+    //
 
 
 function update_alert() {
@@ -85,6 +98,15 @@ function update_alert() {
         $facility_id=$this->facility_model->get_facility_id_given_name($facility_name);
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
         $user_id="4323wrw234";
+        $county_name = $this->input->post('county_name');
+        $county_id = $this->county_model->get_county_id_given_name($county_name);
+
+        $sub_county_name = $this->input->post('sub_county_name');
+        $sub_county_id = $this->sub_county_model->get_sub_county_id_given_name($sub_county_name);
+
+        $facility_name = $this->input->post('facility_name');
+        $facility_id = $this->facilty_model->get_facility_id_given_name($facility_name);
+
         $data = array(
             'date'=>$this->input->post('date'),
             'age'=>$this->input->post('age'),
@@ -93,8 +115,10 @@ function update_alert() {
             'facility_id'=>$facility_id,
             'disease_id'=>$disease_id,
             'user_id'=>$user_id,
-
-            
+            'facility_id'=>$facility_id,
+            'sub_county_id'=>$sub_county_id,
+            'county_id'=>$county_id
+         
         );
 
         $this->alert_model->update_alert($id,$data);

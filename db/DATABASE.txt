@@ -1,0 +1,16 @@
+This is the database logic. It contains scripts for database authentication and connection 
+creation as well as those for inserting, fetching and updating items on the database.
+
+KEY NOTES:
+----------
+	
+	Database Return Message Coding
+	------------------------------
+	CODE		MEANING
+	----		-------
+	 0			Successful insertion of the item into the database
+	 1 			Item exists in the database
+	-1			An error occured
+	10			Item exists in another table in the database and cannot be inserted
+				(For instance a facility exists as a stand alone and cannot be 
+				reclassified as a central store)

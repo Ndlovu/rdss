@@ -28,6 +28,16 @@ class County_model extends CI_Model
         $this->db->update('county_table', $data);
     }
 
+       function get_county_id_given_name($county_name)
+    {
+        $this->db->select('county_id');
+        $this->db->from('county_table');
+        $this->db->where('county_name', $county_name);
+        $query = $this->db->get();
+        $result = $query->row()->county_id;
+        return $result;
+    }
+
    
 
 

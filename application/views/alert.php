@@ -104,15 +104,17 @@
                                     <td><?php foreach ($disease as $disease_object) {
                                         if ($alert_object->disease_id==$disease_object->disease_id) {
                                             echo $disease_object->disease_name;
-                                        }
+                                 }
                                     }?></td>
                                     <td><?php echo $facility_name. ",\n". $sub_county_name . ".\n". $county_name; ?></td>
                                     <td><?php echo $alert_object->age; ?></td>
                                     <td><?php echo $alert_object->sex; ?></td>
                                     <td><?php echo $alert_object->status; ?></td>
                                     <td><?php echo $alert_object->date; ?></td>
-                            <td data-toggle="modal" data-target="#myModal_<?php echo $alert_object->alert_id; ?>"><i class="fa fa-wrench"></i>
-                       <div class="modal inmodal"  id="myModal_<?php echo $alert_object->alert_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <td data-toggle="modal" data-target="#myModal_<?php echo $alert_object->alert_id; ?>"><i class="fa fa-wrench"></i>
+    
+
+    <div class="modal inmodal"  id="myModal_<?php echo $alert_object->alert_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
                                         <div class="modal-header">
@@ -138,7 +140,8 @@
                                         </div>
             
                                         <div class="form-group"><label>County: </label>
-                        <select name="county_name" class="form-control" id="countyid" onchange = "javascript:myFunction();">
+                        <select name="county_name" class="form-control" id="countyid" >
+                        //onchange = "javascript:myFunction();"
 
                                         <option value = "">[Select]</option>
 
@@ -185,8 +188,8 @@
                                     <input type="text" required name="status" class="form-control" value="<?php echo $alert_object->status; ?>">
                                 </div>
 
-                            <div class="form-group"><label>Date:</label>
-                                <input type="text" required name="date" class="form-control" value="<?php echo $alert_object->date; ?>"></div>
+                <div class="form-group"><label>Date:</label>
+                    <input type="text" required name="date" class="form-control" value="<?php echo $alert_object->date; ?>"></div>
 
 
                                         </div>
@@ -231,45 +234,35 @@
                                         <form action="<?= base_url();?>index.php/alert/save_alert" method="post" enctype="multipart/form-data">  
                                         <div class="modal-body">
 
-                 
-
-                                         <div class="form-group"><label>Disease: </label> <select name="disease_name"class="form-control">
-                                        <?php foreach ($disease as $disease_object): ?>
-                                        <option name="disease_name" <?php if ($alert_object->disease_id==$disease_object->disease_id) {echo "Selected";
-                                                } ?> ><?php  echo $disease_object->disease_name;?>
-                                                </option>
-                                        <?php endforeach;?>
-                                        </select>
-                                        </div>
+                             <div class="form-group"><label>Disease: </label><select class="form-control m-b" name="disease_name"  >
+                              <option value = "">[Select]</option>
+                                <?php foreach ($disease as $disease_object): ?>  
+                                  <option  value="<?php echo $disease_object->disease_name;?>" ><?php echo $disease_object->disease_name;?></option><?php endforeach; ?>
+                                                    </select></div>
 
 
-                                             <div class="form-group"><label>County: </label>
-                                        <select name="county_name" class="form-control">
-                                        <?php foreach ($county as $county_object): ?>
-                                        <option name="county_name" <?php if ($alert_object->county_id==$county_object->county_id) {echo "Selected";
-                                                }?> ><?php  echo $county_object->county_name;?>
-                                                </option>
-                                        <?php endforeach;?>
-                                        </select></div>
-
-                                         <div class="form-group"><label>Sub county: </label>
-                                        <select name="sub_county_name" class="form-control">
-                                        <?php foreach ($sub_county as $sub_county_object): ?>
-                                        <option name="sub_county_name" <?php if ($alert_object->sub_county_id==$sub_county_object->sub_county_id) {echo "Selected";
-                                                }?> ><?php  echo $sub_county_object->sub_county_name;?>
-                                                </option>
-                                        <?php endforeach;?>
+                                <div class="form-group"><label>County: </label><select class="form-control m-b" name="county_name">
+                                 <option value = "">[Select]</option>
+                                <?php foreach ($county as $county_object): ?>  
+                                  <option  value="<?php echo $county_object->county_name;?>" ><?php echo $county_object->county_name;?></option><?php endforeach; ?>
                                         </select></div>
 
 
-                                         <div class="form-group"><label>Facility: </label>
-                                        <select name="facility_name" class="form-control">
-                                        <?php foreach ($facility as $facility_object): ?>
-                                        <option name="facility_name" <?php if ($alert_object->facility_id==$facility_object->facility_id) {echo "Selected";
-                                                }?> ><?php  echo $facility_object->facility_name;?>
-                                                </option>
-                                        <?php endforeach;?>
+
+                            <div class="form-group"><label>Sub-county: </label><select class="form-control m-b" name="sub_county_name">
+                             <option value = "">[Select]</option>
+                                <?php foreach ($sub_county as $sub_county_object): ?>  
+                                  <option  value="<?php echo $sub_county_object->sub_county_name;?>" ><?php echo $sub_county_object->sub_county_name;?></option><?php endforeach; ?>
                                         </select></div>
+
+
+
+
+                            <div class="form-group"><label>Facility: </label><select class="form-control m-b" name="facility_name">
+                             <option value = "">[Select]</option>
+                    <?php foreach ($facility as $facility_object): ?>  
+                      <option  value="<?php echo $facility_object->facility_name;?>" ><?php echo $facility_object->facility_name;?></option><?php endforeach; ?>
+                            </select></div>
 
 
                                         <div class="form-group"><label>Age :</label>
@@ -285,17 +278,11 @@
                                     <input type="text" required name="status" class="form-control" placeholder="Status">
                                 </div>
 
-                               <!--   <div class="form-group" id="data_1">
-                                <label class="font-noraml">Date</label>
-                                <div class="input-group date">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    <input type="date" class="form-control" placeholder="Date">
-                                </div>
-                            </div> -->
+                              
 
                              <div class="form-group">
                             <label>Date:</label>
-                            <input id="txtDate" type="text" required name="date" class="form-control"  data-mask="9999-99-99" placeholder="Date">
+                            <input id="textDate" type="text" required name="date" class="form-control"  data-mask="9999-99-99" placeholder="Date">
                             <span class="help-block">yyyy-mm-dd</span>
 
                             <!--<input type="text"  class="form-control" >-->

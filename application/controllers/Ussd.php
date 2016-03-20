@@ -68,3 +68,22 @@ public function index(){
 
 
 }
+
+
+
+
+/*
+  if($input=="get_facility_mfl_codes"){
+       $response = "CON Please enter the facility name to get the mfl code";
+    }
+    else if($input=='facilityname'){
+      temp = $text;
+        $temp = explode(',', $temp);
+        $facility_name = $temp[0];
+
+        $mfl_code = $this->test_model->get_facility_mfl_codes($facility_name);
+        $response = "END The mfl code for $facility_name is: \n $mfl_code";
+
+
+
+    }*/

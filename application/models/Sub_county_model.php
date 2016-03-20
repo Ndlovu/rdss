@@ -28,17 +28,15 @@ class Sub_county_model extends CI_Model
         $this->db->update('sub_county_table', $data);
     }
    
-
-/*   function get_sub_counties_per_county($county_id){
-     $this->db->select('*');
+function get_sub_county_id_given_name($sub_county_name)
+    {
+        $this->db->select('sub_county_id');
         $this->db->from('sub_county_table');
-        $this->db->where('county_id', $county_id);
+        $this->db->where('sub_county_name', $sub_county_name);
         $query = $this->db->get();
-        $result = $query->result();
+        $result = $query->row()->sub_county_id;
         return $result;
-
- }*/
-
+    }
 
   
 

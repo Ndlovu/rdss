@@ -36,11 +36,15 @@ class Facility_model extends CI_Model
     }
 
 
-
-    
-
-
-
+   function get_facility_mfl_codes($facility_name){
+        $this->db->select('mfl_code');
+        $this->db->from('facility_table');
+        $this->db->where('facility_name', $facility_name);
+        $query = $this->db->get();
+        $result = $query->row()->mfl_code;
+        return $result;
+        //var_dump($result);
+    }
 
     
     
