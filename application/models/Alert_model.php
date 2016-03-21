@@ -27,16 +27,14 @@ class Alert_model extends CI_Model
 
 
 
-    
+  public function show_ussd_disease_report(){
+        $sql ="SELECT record_id, age, sex, status, time_stamp, disease_code as did, mfl_code as mfl, (SELECT disease_name FROM disease_table WHERE disease_acronym = did) as disease_name, (SELECT facility_name FROM facility_table WHERE mfl_code = mfl) as facility_name FROM sessions";
+        $result= $this->db->query($sql);
+        return $result->result();
+
+    } 
 
 
-
-
-    
-    
-
-
-    
 
     
 }

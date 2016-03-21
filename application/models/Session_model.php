@@ -15,13 +15,13 @@ class Session_model extends CI_Model
             return false;
         }
     }
-
+ 
     public function check_if_session_exists($session_id, $phone_number){
         $this->db->where('session_id', $session_id);
         $this->db->where('phone_number', $phone_number);
         $result = $this->db->get('sessions');
         if ($result->num_rows() > 0) {
-            $variable=$result->result()[0];
+            $variable=$result->result();
             return $variable;
         } else {
             return false;

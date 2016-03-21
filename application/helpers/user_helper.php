@@ -72,3 +72,20 @@ function is_logged_in()
         return $result;
 
  }
+
+
+
+
+
+    function get_facility_name_given_mfl($mfl_code){
+        $CI = &get_instance();
+        $CI->db->select('facility_name');
+        $CI->db->from('facility_table');
+        $CI->db->where('mfl_code', $mfl_code);
+        $query = $CI->db->get();
+        $result = $query->row()->facility_name;
+        return $result;
+    }
+    
+    
+

@@ -72,7 +72,7 @@
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                                         <i class="fa fa-laptop modal-icon"></i>
-                                                        <h4 class="modal-title">Edit Sub-county</h4>
+                                                        <h4 class="modal-title">Edit incident entry</h4>
 
                                                     </div>
                                                     <div class="modal-body">

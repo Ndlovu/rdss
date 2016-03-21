@@ -9,10 +9,14 @@
 
                 <div class="dropdown profile-element"> <!-- <span>RDSS</span> -->
                   <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
-                    <a> <span class="clear"> <span class="block m-t-xs" style="font-size:14px">Logged in as: <strong class="font-bold"> <?php echo($this->session->userdata('names'));?></strong></span>  </span></a>
+                    <a> <span class="clear"> <span class="block m-t-xs" style="font-size:14px"><!-- Logged in as: --> <i class="fa fa-user"></i><strong class="font-bold"> <?php echo($this->session->userdata('names'));?></strong></span>  </span></a>
                   <?php } else { ?>
-                  <a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/login">Login</a><?php }?>
+                  <!-- <a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/login">Login</a> -->
+                  <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a>
+                  <?php }?>
                 </div>
+
+                <!-- <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a> -->
                         
                      <!--    <div class="logo-element">IN+
                         </div> -->
@@ -33,18 +37,13 @@
                     <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">Facilities</a></li>
                     <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">Sub counties</a></li>
                      <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">Issue alert</a></li>
-                      <li>
-                    <a href="<?php echo base_url(); ?>index.php/login/logout">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
-                </li>
+                     
                     
              </ul>
-
-
-
             </li>
+           
             <?php } ?>
+             <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/reports">USSD reports</a></li>
             <li><li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/register">Register</a></li></li>
               
                  
@@ -71,11 +70,16 @@
         
                 
                
-                <li>
-                    <a class="right-sidebar-toggle">
-                        <i class="fa fa-tasks"></i>
+                <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
+
+                 <li><a href="<?php echo base_url(); ?>index.php/login/logout"><i class="fa fa-sign-out"></i> Log out
                     </a>
                 </li>
+
+                  <?php } ?>
+
+
+
             </ul>
 
         </nav>

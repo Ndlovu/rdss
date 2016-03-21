@@ -42,6 +42,7 @@ class Welcome extends CI_Controller {
 	public function index()
 {
 	$this->load->view('welcome_message');
+	//$this->disease_location();
 
 
 
@@ -52,6 +53,10 @@ class Welcome extends CI_Controller {
 	$some_data = $this->welcome_model->map_disease_location();
     //$some_data = $this->Some_model->get_some_data();
     $some_data = json_encode($some_data);
+    var_dump($some_data);
+
+
+
   
 	}
 
