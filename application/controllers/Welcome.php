@@ -40,14 +40,14 @@ class Welcome extends CI_Controller {
 			
 
 		}
-		
+
 		// string(59) "[{"location":"Kwale County"},{"location":"Bungoma County"}]" 
 
 			public function disease_location(){
 			$some_data = $this->welcome_model->map_disease_location();
 		    $some_data = json_encode($some_data);
-		   return $some_data;
-		    //var_dump($some_data);
+		   echo $some_data;
+		   //print_r($some_data);
 		  }
 
 

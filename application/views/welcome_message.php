@@ -152,6 +152,7 @@
           //show the places with houses on button click
             var geocoder = new google.maps.Geocoder();
             document.getElementById('fe').addEventListener('click', function() {
+
               geocodeAddress(geocoder, map1);
               //geocodemultipleAddresses();
             });
@@ -162,7 +163,8 @@
 
 
 
-  $.getJSON('http://identitiestech.com/rdss/index.php/welcome/disease_location', function(data) {
+  $.getJSON('http://localhost/rdss/index.php/welcome/disease_location', function(data) {
+    console.log(data);
     $(data).each(function(key, value) {
 
     address = value + ",Kenya";

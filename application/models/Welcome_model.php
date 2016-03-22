@@ -8,7 +8,7 @@ class Welcome_model extends CI_Model
         $alert_location = null;
         if ($result->num_rows()>0) {
             foreach ($result->result() as  $value) {
-               $alert_location[] = array('location' => $value->c_name);
+               $alert_location[] = $value->c_name;
               }
             return ($alert_location);
                                   
@@ -22,7 +22,22 @@ class Welcome_model extends CI_Model
 
 
 
+/* function get_house_locations(){
 
+            $this->db->select('location');
+            $this->db->from('house_details');            
+            $query = $this->db->get();
+            
+            if($query->num_rows() > 0){
+                    $locations_arr;
+                    // Format for passing into jQuery loop
+                    foreach ($query->result() as $locations) {
+                        $locations_arr[] = $locations->location;
+                    }
+
+                    return $locations_arr;
+                }
+    }*/
 
 
 
