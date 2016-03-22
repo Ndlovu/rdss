@@ -30,35 +30,25 @@ class Welcome extends CI_Controller {
     {
         parent::__construct();
 
-        $this->load->model('welcome_model');
+		   $this->load->model('welcome_model');
+   }
 
-    }
-/*	public function index()
-	{
-		$this->load->view('welcome_message');
-	}*/
+		public function index()
+		{
+			$this->load->view('welcome_message');
+			//$this->disease_location();
+			
 
+		}
+		
+		// string(59) "[{"location":"Kwale County"},{"location":"Bungoma County"}]" 
 
-	public function index()
-{
-	$this->load->view('welcome_message');
-	//$this->disease_location();
-
-
-
-}
-
-
-	public function disease_location(){
-	$some_data = $this->welcome_model->map_disease_location();
-    //$some_data = $this->Some_model->get_some_data();
-    $some_data = json_encode($some_data);
-    var_dump($some_data);
-
-
-
-  
-	}
+			public function disease_location(){
+			$some_data = $this->welcome_model->map_disease_location();
+		    $some_data = json_encode($some_data);
+		   return $some_data;
+		    //var_dump($some_data);
+		  }
 
 
 

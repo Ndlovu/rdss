@@ -51,6 +51,7 @@
             <th>Email</th>
             <th>ID number</th>
             <th>Phone number</th>
+            <th>Role</th>
             <th></th>
         </tr>
         </thead>
@@ -70,6 +71,7 @@
                     <td><?php echo($user->email); ?></td>
                     <td><?php echo($user->national_id); ?></td>
                     <td><?php echo($user->phone_number); ?></td>
+                    <td><?php echo($user->role); ?></td>
                     <td class="center"><a data-target="#edit_user_modal_<?php echo($user->user_id); ?>" data-toggle="modal" href="#">
                             <i class="fa fa-wrench"></i> Edit
                         </a>
@@ -89,12 +91,12 @@
                                             <div class="form-group">
                                                 <input name="email" type="email" class="form-control" placeholder="Email" value="<?php echo($user->email); ?>" required="">
                                             </div>
-                                            <input type="hidden" name="user_id" value="<?php echo($user->user_id); ?>" >
+                                            <input type="hidden" name="role" value="<?php echo($user->user_id); ?>" >
                                             <div class="form-group">
-                                                <input name="password" type="password" class="form-control" placeholder="Password" >
+                                                <input name="role" type="text"  value="<?php echo($user->role); ?>"class="form-control" placeholder="Role" >
                                             </div>
                                             <div class="form-group">
-                                                <input name="national_id" type="number" class="form-control" value="<?php echo($user->national_id); ?>" placeholder="National ID number" required="">
+                                                <input name="national_id" type="number" class="form-control" value="<?php echo($user->national_id); ?>" placeholder="National ID number" required>
                                             </div>
                                             <div class="form-group">
                                                 <input name="phone_number" type="tel" class="form-control" placeholder="Phone Number" value="<?php echo($user->phone_number); ?>" required="">
@@ -141,6 +143,7 @@
             <th>Email</th>
             <th>ID number</th>
             <th>Phone number</th>
+            <th>Role</th>
             <th></th>
         </tr>
         </tfoot>

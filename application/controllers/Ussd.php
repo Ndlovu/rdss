@@ -24,11 +24,9 @@ public function index(){
     
         $response = "CON Register to rdss. Please use the format: full names, ID number, email.\n Format:george oliech,2121212 georgeoliech@gmail.com";
 
-      }//$response = "CON Please register to proceed. \n";
-       else if ($session_is_present['input_step'] == 1){//get name, email and national ID
+      }else if ($session_is_present['input_step'] == 1){
         $temp = $text;
-
-        $temp = explode(',', $temp);
+        $temp = explode(',', $temp);//remove commas from the sting to identify each user input
         $full_name = $temp[0];
         $id_number = $temp[1];
         $email_address =$temp[2]; 
@@ -38,8 +36,7 @@ public function index(){
 
      $response = "CON Registration successful: Welcome \n report disease incident\n MFL_CODE,DISEASE_CODE,AGE,GENDER,STATUS
              Format: PGH,CL,10,F,Alive";
-      }
-                else if($session_is_present['input_step']==2) {
+      }else if($session_is_present['input_step']==2) {
 
                   $temp = $text;
                   $temp = explode('*', $temp);
@@ -50,7 +47,7 @@ public function index(){
                   $age = $temp[2];
                   $sex = $temp[3];
                   $status = $temp[4];
-  $this->session_model->save_incident_report($session_id, $mfl_code, $disease_code, $age, $sex, $status); //save disease incident
+                  $this->session_model->save_incident_report($session_id, $mfl_code, $disease_code, $age, $sex, $status);
                   $response = "END Thank You for using RDSS \n.";
 
                 }
@@ -59,7 +56,7 @@ public function index(){
         
 
       // Print the response onto the page so that our gateway can read it
-     header('Content-type: text/plain');
+     //header('Content-type: text/plain');
      echo $response;
       
 
@@ -70,20 +67,3 @@ public function index(){
 }
 
 
-
-
-/*
-  if($input=="get_facility_mfl_codes"){
-       $response = "CON Please enter the facility name to get the mfl code";
-    }
-    else if($input=='facilityname'){
-      temp = $text;
-        $temp = explode(',', $temp);
-        $facility_name = $temp[0];
-
-        $mfl_code = $this->test_model->get_facility_mfl_codes($facility_name);
-        $response = "END The mfl code for $facility_name is: \n $mfl_code";
-
-
-
-    }*/

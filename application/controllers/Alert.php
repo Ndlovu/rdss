@@ -139,39 +139,59 @@ function update_alert() {
 
 
 
+    function weekly_report(){
+
+
+        $data['w_report'] =  $this->alert_model->show_weekly_reports();
+     
+         $data['disease']=$this->disease_model->show_diseases();
+        $data['facility']=$this->facility_model->show_facilities();
+        $data['sub_county']=$this->sub_county_model->show_sub_counties();
+        $data['county'] = $this->county_model->show_counties();
+         $this->load->view('weekly_report',$data);
+      
+    
+
+
+    }
+
+
+    function save_weekly_report(){
+        $disease_name=$this->input->post('disease_name');
+        $facility_name = $this->input->post('facility_name');
+        $facility_id=$this->facility_model->get_facility_id_given_name($facility_name);
+        $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
+        $user_id="4323wrw234";
+
+        $weekly_cases = $this->input->post('weekly_cases');
+        $number_of_deaths = $this->input->post('number_of_deaths');
+        $start_date = $this->input->post('start_date');
+         $end_date = $this->input->post('end_date');
+
+               
+        $alert = array(
+            
+            'facility_id'=>$facility_id,
+            'disease_id'=>$disease_id,
+            'user_id'=>$user_id,
+             'alert_id'=>uniqid(),
+             'facility_id'=>$facility_id,
+             'start_date'=>$start_date,
+             'end_date'=>$end_date
+            
+            
+        );
+
+        $disease_id = $this->alert_model->add_weekly_report($alert);
+        //$this->show_alerts();
+
+     //   $this->load->view('weekly_report');
+        $this->weekly_report();
+    }
+
+
+
 }
 
 
 
-
-/*function get_by_id()
-    {
-        $pending_shipment_id = $_GET['pending_shipment_id'];
-        $data=$this->stocks_model->show_pending_shipment_by_id($pending_shipment_id);
-        
-        $data_array = array();
-        foreach($data as $myvalue){
-        $commodity_id=$myvalue->commodity_id;
-        $funding_agency_id=$myvalue->funding_agency_id;
-        $funding_agency_name=$this->stocks_model->get_funding_agency_name($funding_agency_id);
-        $commodity_name= $this->stocks_model->get_commodity_id_with_the_given_id($commodity_id);
-       
-        $data_array[] = $funding_agency_id;
-        $data_array[] = $funding_agency_name;
-        $data_array[] = $commodity_id;
-        $data_array[] = $commodity_name;
-        //echo($funding_agency_name." ".$commodity_name);
-        }
-        /*NOTES:
-            0 - funding agency id
-            1 - funding agency name
-            2 - commodity id
-            3 - commodity name
-    
-        $return = json_encode($data_array);
-        echo $return;
-        
-    }
-*/
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

@@ -12,7 +12,8 @@
                     <a> <span class="clear"> <span class="block m-t-xs" style="font-size:14px"><!-- Logged in as: --> <i class="fa fa-user"></i><strong class="font-bold"> <?php echo($this->session->userdata('names'));?></strong></span>  </span></a>
                   <?php } else { ?>
                   <!-- <a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/login">Login</a> -->
-                  <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a>
+                  <!-- <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a> -->
+                  <a style="font-size:15px"><i>IDENTITIES TECH</i></a>
                   <?php }?>
                 </div>
 
@@ -37,13 +38,15 @@
                     <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">Facilities</a></li>
                     <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">Sub counties</a></li>
                      <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">Issue alert</a></li>
-                     
-                    
+                                      
              </ul>
             </li>
            
             <?php } ?>
+            <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report">Weekly reports</a></li>
              <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/reports">USSD reports</a></li>
+              <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/users">Manage users</a></li>
+             
             <li><li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/register">Register</a></li></li>
               
                  
@@ -76,9 +79,13 @@
                     </a>
                 </li>
 
-                  <?php } ?>
+                  <?php } else{ ?>
+                     <li><a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a>
+                </li>
 
+                  <?php  }?>
 
+<!--   <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a> -->
 
             </ul>
 
