@@ -56,7 +56,8 @@ class Alert extends CI_Controller
         $facility_name = $this->input->post('facility_name');
         $facility_id=$this->facility_model->get_facility_id_given_name($facility_name);
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
-        $user_id="4323wrw234";
+       // $user_id="4323wrw234";
+        $user_id= $this->session->userdata('user_id');
         $county_name = $this->input->post('county_name');
         $county_id = $this->county_model->get_county_id_given_name($county_name);
 
@@ -97,7 +98,8 @@ function update_alert() {
         $facility_name = $this->input->post('facility_name');
         $facility_id=$this->facility_model->get_facility_id_given_name($facility_name);
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
-        $user_id="4323wrw234";
+        // $user_id="4323wrw234";
+        $user_id= $this->session->userdata('user_id');
         $county_name = $this->input->post('county_name');
         $county_id = $this->county_model->get_county_id_given_name($county_name);
 
@@ -161,8 +163,8 @@ function update_alert() {
         $facility_name = $this->input->post('facility_name');
         $facility_id=$this->facility_model->get_facility_id_given_name($facility_name);
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
-        $user_id="4323wrw234";
-
+      
+        $user_id= $this->session->userdata('user_id');
         $weekly_cases = $this->input->post('weekly_cases');
         $number_of_deaths = $this->input->post('number_of_deaths');
         $start_date = $this->input->post('start_date');

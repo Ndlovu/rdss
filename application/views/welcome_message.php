@@ -171,7 +171,6 @@
 
     geocoder.geocode(
       {
-        // 'address': address[i]
         'address': address
       },
       function(results, status) {

@@ -16,7 +16,7 @@ class Session_model extends CI_Model
         }
 
     }
-/*identitiestech.com/rdss/*/
+
 
     public function new_session($session_id, $phone_number)
     {

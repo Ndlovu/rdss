@@ -1,49 +1,67 @@
 <?php require_once("includes/header.php"); ?>
 
-
-    <div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
-            <h2>Manage Facilities</h2>
-
+            <h2>Manage facility</h2>
+            <!--<ol class="breadcrumb">
+                <li>
+                    <a href="index.html">This is</a>
+                </li>
+                <li class="active">
+                    <strong>Breadcrumb</strong>
+                </li>
+            </ol>-->
         </div>
         <div class="col-sm-8">
             <div class="title-action">
                 <a href="#"  data-toggle="modal" data-target="#add_facility" class="btn btn-primary">Add a facility</a>
-
-
             </div>
         </div>
     </div>
+    
 
 
+     <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
 
-     <div class="wrapper wrapper-content">
-       <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Faciity</h5>
+
+                <div class="col-lg-8">
+
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Facilities </h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+
+                            </div>
+                        </div>
+
+                        
                         <div class="ibox-content">
 
-                        <table class="table">
-                            <thead>
+                            <table class="table table-striped">
+                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Facility</th>
-                                    <th>Location</th>
-                                    <th>Description</th>
-                                    <th>Edit</th>
+                                    <th>facility</th>
+                                    <th>mfl code</th>
+                                   
+                                    <th>description</th>
+                                    <th>edit</th>
                                     </tr>
 
                             </thead>
-
-                            <tbody>
+                             <tbody>
                             <?php $count=1; ?>
                             <?php foreach ($facility as $facility_object): ?>
 
                                 <tr>
                                     <td><?php echo $count; ?></td>
                                     <td><?php echo $facility_object->facility_name; ?></td>
-                                    <td><?php echo $facility_object->facility_acronym;?></td>
+                                    <td><?php echo $facility_object->mfl_code;?></td>
+
                                     <td><?php echo $facility_object->facility_description; ?></td>
                             <td data-toggle="modal" data-target="#myModal_<?php echo $facility_object->facility_id; ?>"><i class="fa fa-wrench"></i>
 
@@ -81,9 +99,18 @@
                                     </td></tr>
                                 <?php $count++; endforeach; ?>
                             </tbody>
+                            </table>
+                        </div>
 
-                        </table>
 
+                        <div class="row">
+        <div class="col-md-12 text-center">
+            <?php echo $pagination; ?>
+        </div>
+    </div>
+
+
+                        
                     </div>
                 </div>
             </div>
@@ -91,8 +118,9 @@
 
         </div>
 
-    </div>
-</div>
+
+<?php require_once("includes/footer.php"); ?>
+
 
 
 <div class="modal inmodal" id="add_facility" tabindex="-1" role="dialog" aria-hidden="true">
@@ -125,12 +153,3 @@
                                     </div>
                                 </div>
                             </div>
-       
-     
-
-
-
-   
-
-
-<?php require_once("includes/footer.php"); ?>

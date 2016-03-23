@@ -74,6 +74,8 @@ class Login extends CI_Controller
         redirect(base_url());
     }
 
+    
+
 }
 
 /* End of file welcome.php */

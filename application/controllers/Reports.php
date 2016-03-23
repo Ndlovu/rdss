@@ -27,7 +27,11 @@ class Reports extends CI_Controller
         $data['ussd_report'] = $this->alert_model->show_ussd_disease_report();
         $this->load->view('ussd_report', $data);
         
-    }    
+    }  
+
+    function report_per_county(){
+        
+    }  
 
 
 

@@ -2,12 +2,28 @@
 class Facility_model extends CI_Model
 {
     // Function To Fetch All facilities in the system database
-    function show_facilities()
-    {
+    function show_facilities($limit, $start)
+    {   $this->db->limit($limit, $start);
         $query = $this->db->get('facility_table');
         $query_result = $query->result();
         return $query_result;
     }
+
+
+     
+
+
+
+     /* $sql ="SELECT facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id, (SELECT parent_id FROM sub_county_table WHERE sub_county_id = sub_id) as cid,(SELECT county_name FROM county_table WHERE county_id = cid) as c_name FROM alerts_table";*/
+
+    /*  function get_department_list($limit, $start)
+    {
+        $sql = 'select var_dept_name, var_emp_name from tbl_dept, tbl_emp where tbl_dept.int_hod = tbl_emp.int_id order by var_dept_name limit ' . $start . ', ' . $limit;
+        $query = $this->db->query($sql);
+        return $query->result();
+    }*/     
+
+
 
     // This function fetches the id of a particular facility object from the database
     function get_facility_id_given_name($facility_name)

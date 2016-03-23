@@ -37,13 +37,12 @@ class Alert_model extends CI_Model
         function show_weekly_reports(){
 
             $sql ="SELECT weekly_record_id, deaths, number_of_cases, start_date, end_date, disease_id as did, facility_id as fid, (SELECT facility_name FROM facility_table WHERE facility_id = fid) as f_name, (SELECT parent_id FROM facility_table WHERE facility_id=fid) as sub_id, (SELECT sub_county_name FROM sub_county_table WHERE sub_county_id=sub_id) as sub_name, (SELECT parent_id FROM sub_county_table WHERE sub_county_id = sub_id) as cid,(SELECT county_name FROM county_table WHERE county_id=cid) as c_name, (SELECT disease_name FROM disease_table WHERE disease_id = did) as d_name FROM weekly_reports";
-        $result= $this->db->query($sql);
-      return($result->result());
+                $result= $this->db->query($sql);
+                return($result->result());
 
         }
 
-
-    
+   
 }
 ?>
 

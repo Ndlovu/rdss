@@ -15,6 +15,12 @@ class Sub_county extends CI_Controller
         parent::__construct();
 
         $this->load->model('sub_county_model');
+
+
+        $this->load->helper('url');
+       $this->load->database();
+        $this->load->library('pagination');
+
         
     }
     public function index()
@@ -22,9 +28,47 @@ class Sub_county extends CI_Controller
         $this->show_sub_county_id();
     }
     public function show_sub_county_id() {
-        $set="";
+
+
+    
+
+     //pagination settings
+        $config['base_url'] = site_url('sub_county/index');
+        $config['total_rows'] = $this->db->count_all('sub_county_table');
+        $config['per_page'] = "50";
+        $config["uri_segment"] = 3;
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        //config for bootstrap pagination class integration
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+
+
+         $set="";
         $id = $this->uri->segment(3);//get id from the url
-        $data['sub_counties'] = $this->sub_county_model->show_sub_counties();
+        $data['sub_counties'] = $this->sub_county_model->show_sub_counties($config["per_page"], $data['page']);
+        $data['pagination'] = $this->pagination->create_links();
         if ($this->sub_county_model->show_sub_county_id($id)) {$set="set";}
         $data['single_sub_county'] = $this->sub_county_model->show_sub_county_id($id);
         $this->load->view('sub_county',$data);

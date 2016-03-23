@@ -38,6 +38,8 @@
 
                             </div>
                         </div>
+
+                        
                         <div class="ibox-content">
 
                             <table class="table table-striped">
@@ -114,6 +116,16 @@
                                 </tbody>
                             </table>
                         </div>
+
+
+                        <div class="row">
+        <div class="col-md-12 text-center">
+            <?php echo $pagination; ?>
+        </div>
+    </div>
+
+
+                        
                     </div>
                 </div>
             </div>
