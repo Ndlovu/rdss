@@ -65,7 +65,7 @@ class Facility extends CI_Controller
 
 
 
-        $data['facility'] = $this->facility_model->show_facilities($config["per_page"], $data['page']);
+        $data['facility'] = $this->facility_model->show_facility($config["per_page"], $data['page']);
         $data['pagination'] = $this->pagination->create_links();
         $this->load->view('facility',$data);
 

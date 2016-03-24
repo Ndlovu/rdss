@@ -67,7 +67,7 @@ class Sub_county extends CI_Controller
 
          $set="";
         $id = $this->uri->segment(3);//get id from the url
-        $data['sub_counties'] = $this->sub_county_model->show_sub_counties($config["per_page"], $data['page']);
+        $data['sub_counties'] = $this->sub_county_model->show_sub_county($config["per_page"], $data['page']);
         $data['pagination'] = $this->pagination->create_links();
         if ($this->sub_county_model->show_sub_county_id($id)) {$set="set";}
         $data['single_sub_county'] = $this->sub_county_model->show_sub_county_id($id);

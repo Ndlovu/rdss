@@ -33,22 +33,32 @@
                         <ul class="nav nav-second-level">
 
                     
-                    <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/disease">Infectious disease(s)</a></li>
-                    <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/county">Counties</a></li>
-                    <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">Facilities</a></li>
-                    <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">Sub counties</a></li>
-                     <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">Issue alert</a></li>
+                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/disease">Infectious disease(s)</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/county">Counties</a></li>
+                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">Facilities</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">Sub counties</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">Issue alert</a></li>
                                       
              </ul>
             </li>
            
             <?php } ?>
-            <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report">Weekly reports</a></li>
-             <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/reports">USSD reports</a></li>
-              <li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/users">Manage users</a></li>
+
+
+<!--    <a href="#"><i class="fa fa-info-circle"></i> <span class="nav-label" style="font-size:16px">Reports</span><span
+                        class="fa fa-info-circl"></span></a>
+                        <ul class="nav nav-second-level"> -->
+
+            <!-- <i class="fa fa-info-circle"></i> -->
+            <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report">Weekly reports</a></li>
+             <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/reports">USSD reports</a></li>
+              <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/users">Manage users</a></li>
              
-            <li><li><a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/register">Register</a></li></li>
-              
+            <li><li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/register">Register</a></li></li>
+
+              <!--    </ul>
+            </li>
+               -->
                  
                 </ul>
 

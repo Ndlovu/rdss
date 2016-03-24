@@ -37,6 +37,7 @@ class Welcome extends CI_Controller {
 		{
 			$this->load->view('welcome_message');
 			//$this->disease_location();
+			// $this->map_ussd_locations();
 			
 
 		}
@@ -48,6 +49,12 @@ class Welcome extends CI_Controller {
 		    $some_data = json_encode($some_data);
 		   echo $some_data;
 		   //print_r($some_data);
+		  }
+		  public function map_ussd_locations(){
+
+		  	$data = $this->welcome_model->show_ussd_disease_report();
+		  	$data = json_encode($data);
+		  	echo($data);
 		  }
 
 

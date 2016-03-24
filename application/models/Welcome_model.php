@@ -18,30 +18,31 @@ class Welcome_model extends CI_Model
 
 
 
+
+
+
+    public function show_ussd_disease_report(){
+        $sql ="SELECT record_id, age, sex, status, time_stamp, disease_code as did, mfl_code as mfl, (SELECT disease_name FROM disease_table WHERE disease_acronym = did) as disease_name, (SELECT facility_name FROM facility_table WHERE mfl_code = mfl) as facility_name FROM sessions";
+        $result= $this->db->query($sql);
+        $disease_report = null;
+        if($result ->num_rows() > 0){
+             $result=$result->result();
+            foreach ($result as $alert_item) {
+                $disease_report = array("Facility" => $alert_item->facility_name,
+                                        "Disease"=>$alert_item->disease_name,
+                                        "Age"=>$alert_item->age,
+                                        "Sex"=>$alert_item->sex);
+            }
+            return $disease_report;
+
+        }
+        //return $result->result();
+     //var_dump($result);
+    } 
+
+
+
 }
-
-
-
-/* function get_house_locations(){
-
-            $this->db->select('location');
-            $this->db->from('house_details');            
-            $query = $this->db->get();
-            
-            if($query->num_rows() > 0){
-                    $locations_arr;
-                    // Format for passing into jQuery loop
-                    foreach ($query->result() as $locations) {
-                        $locations_arr[] = $locations->location;
-                    }
-
-                    return $locations_arr;
-                }
-    }*/
-
-
-
-
 
 
 

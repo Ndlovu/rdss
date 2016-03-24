@@ -7,8 +7,7 @@ class Session_model extends CI_Model
         $this->db->where('phone_number', $phone_number);
         $query = $this->db->get('sessions');
         if ($query->num_rows() > 0) {
-            $variable = $query->row();
-           // return($variable=$result->result()[0]);
+           $variable=$result->result()[0];
             return $variable;
 
             } else {

@@ -76,41 +76,15 @@
 
                              ?>
 
-                            <?php foreach ($alert as $alert_object): 
-
-
-                           foreach($county as $county_location){
-                            if ($alert_object->county_id == $county_location->county_id) {
-                                $county_name = $county_location->county_name;
-                            }
-                           }
-
-                           foreach ($facility as $fclty) {
-                                        if ($alert_object->facility_id==$fclty->facility_id) {
-                                            $facility_name = $fclty->facility_name;
-                                        }
-                                    }
-
-                            foreach ($sub_county as $sub_location) {
-                                if ($alert_object->sub_county_id == $sub_location->sub_county_id) {
-                                    $sub_county_name= $sub_location->sub_county_name;
-                                }
-                            }
-
-
-                            ?>
-                                <tr>
+                            <?php foreach ($alert as $alert_object):?>
+                             <tr>
                                     <td><?php echo $count; ?></td>
-                                    <td><?php foreach ($disease as $disease_object) {
-                                        if ($alert_object->disease_id==$disease_object->disease_id) {
-                                            echo $disease_object->disease_name;
-                                 }
-                                    }?></td>
-                                    <td><?php echo $facility_name. ",\n". $sub_county_name . ".\n". $county_name; ?></td>
+                                    <td><?php $alert_object->disease_name;?></td>
+                                    <td><?php echo $alert_object->c_name; ?></td>
                                     <td><?php echo $alert_object->age; ?></td>
                                     <td><?php echo $alert_object->sex; ?></td>
                                     <td><?php echo $alert_object->status; ?></td>
-                                    <td><?php echo $alert_object->date; ?></td>
+                                    <td><?php echo $alert_object->report_date; ?></td>
                 <td data-toggle="modal" data-target="#myModal_<?php echo $alert_object->alert_id; ?>"><i class="fa fa-wrench"></i>
     
 
@@ -282,7 +256,7 @@
 
                              <div class="form-group">
                             <label>Date:</label>
-                            <input id="textDate" type="text" required name="date" class="form-control"  data-mask="9999-99-99" placeholder="Date">
+                            <input id="textDate" type="text" required name="date" class="form-control"   placeholder="Date">
                             <span class="help-block">yyyy-mm-dd</span>
 
                             <!--<input type="text"  class="form-control" >-->
