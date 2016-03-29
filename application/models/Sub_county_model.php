@@ -50,6 +50,19 @@ function get_sub_county_id_given_name($sub_county_name)
         return $result;
     }
 
+
+
+    function show_sub_county_by_county_id($county_id)
+    {
+        $this->db->select('*');
+        $this->db->from('sub_county_table');
+        $this->db->where('parent_id', $county_id);
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+     
+    }
+
   
 
 }

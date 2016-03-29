@@ -38,6 +38,18 @@ class County_model extends CI_Model
         return $result;
     }
 
+    function show_county_names()
+    {
+        $this->db->select('county_name');
+        $query = $this->db->get('county_table');
+        $query_result = $query->result();
+        return $query_result;
+
+    }
+
+   
+
+     
    
 
 

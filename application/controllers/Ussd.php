@@ -24,7 +24,7 @@ public function index(){
     
         $response = "CON Register to rdss. Please use the format: full names, ID number, email.\n Format:george oliech,2121212 georgeoliech@gmail.com";
 
-      }else if ($session_is_present['input_step'] == 1){
+      }else if ($session_is_present == 1){
         $temp = $text;
         $temp = explode(',', $temp);//remove commas from the sting to identify each user input
         $full_name = $temp[0];
@@ -37,7 +37,7 @@ public function index(){
      $response = "CON Registration successful: Welcome \n report disease incident\n MFL_CODE,DISEASE_CODE,AGE,GENDER,STATUS
              Format: PGH,CL,10,F,Alive";
              
-      }else if($session_is_present['input_step']==2) {
+      }else if($session_is_present==2) {
 
                   $temp = $text;
                   $temp = explode('*', $temp);
@@ -67,4 +67,4 @@ public function index(){
 
 }
 
-
+?>

@@ -189,30 +189,7 @@
 
 }
 
-  /*function myFunction() 
-  {
-      var base_url = "<?= base_url();?>";
-      var item = document.getElementById("countyid");
-      var itemIndex = item.selectedIndex;
-      var itemSelected = item[itemIndex].value;
-     var url = base_url+"alert/get_sub_county_by_id";
-     $.getJSON
-      ( url,
-        {county_name:itemSelected},
-        function(dataReceived)
-        {
-          /*NOTES:
-            0 - funding agency id
-            1 - funding agency name
-            2 - commodity id
-            3 - commodity name
-          
-          $("#selected_sub_county").html(dataReceived[1]);
-         
-        }
-
-      );
-  }*/
+  
   </script>  
    
 </div>

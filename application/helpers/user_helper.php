@@ -8,84 +8,14 @@ function is_logged_in()
     return isset ($user_data ['user_id']);
 }
 
-/*function sub_county_in_county($county_id){
-	$CI = &get_instance();
-	$CI->db->where('county_id',$county_id);
-	$query = $CI ->db->get('sub_county_table');
-	$result = $query ->result();
-	return $result;
+
+function sub_counties_in_county($county_id){
+    $CI = get_instance();
+    $CI->db->where('parent_id', $county_id);
+    $sub_county =$CI->db->get('sub_county_table');
+    return $sub_county->result();
+   
 
 
-}*/
-
-
-/*// Function To Fetch All Sub-ounties Record
-    function show_sub_counties()
-    {
-        $this->db->order_by('sub_county_name', 'asc');
-        $query = $this->db->get('sub_county_table');
-        $query_result = $query->result();
-        return $query_result;
-    }*/
-
-/* function get_name_given_id($county_id)
-{
-        $this->db->select('county_name');
-        $this->db->from('alerts_table');
-        $this->db->where('county_id', $county_id);
-        $query = $this->db->get();
-        $result = $query->row()->disease_id;
-        return $result;
-    }*/
-
-
-
-  /*  //function that retrieves county name given the county id
-    function get_county_name_given_county_id($county_id){
-        $CI = &get_instance();
-        $CI->db->select('county_name');
-        $CI->db->from('county_table');
-        $CI->db->where('county_id', $county_id);
-        $query = $CI->db->get();
-        $result = $query->row()->county_name;
-        return $result;
-    }
-*/
-
-// Function To Fetch All Sub-ounties Record
-    function show_sub_counties()
-    {
-    	$CI = &get_instance();
-        $CI->db->order_by('sub_county_name', 'asc');
-        $query = $CI->db->get('sub_county_table');
-        $query_result = $query->result();
-        return $query_result;
-    }
-
-   function sub_county_in_county($county_id){
-   		$CI = &get_instance();
-     	$CI->db->select('*');
-        $CI->db->from('sub_county_table');
-        $CI->db->where('county_id', $county_id);
-        $query = $CI->db->get();
-        $result = $query->result();
-        return $result;
-
- }
-
-
-
-
-
-    function get_facility_name_given_mfl($mfl_code){
-        $CI = &get_instance();
-        $CI->db->select('facility_name');
-        $CI->db->from('facility_table');
-        $CI->db->where('mfl_code', $mfl_code);
-        $query = $CI->db->get();
-        $result = $query->row()->facility_name;
-        return $result;
-    }
-    
-    
-
+}
+?>

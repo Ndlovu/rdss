@@ -1,7 +1,5 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
-* A collection of functions to be run through command line only.
-*/
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Findtweets extends CI_Controller {
 
     public function __construct()
@@ -30,4 +28,6 @@ class Findtweets extends CI_Controller {
       $this->twitterlib->searchone($cachetime);
     }
 }
+
+
 ?>

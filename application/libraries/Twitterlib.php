@@ -23,17 +23,16 @@ class Twitterlib {
 	*/
 	public function searchterms($result=false)
 	{
-		$this->CI->db->select('disease_name');
-		$query = $this->CI->db->get('disease_table');
+		$this->CI->db->select('term');
+		$query = $this->CI->db->get('search_terms');
 		if ( $query->num_rows() > 0 )
 		{
 			$result = $query->result_array();
 			foreach ($result as $row=>$data)
 			{
-				$result[$row]=$data['disease_name'];
+				$result[$row]=$data['term'];
 			}
 		}
-		
 		return $result;
 	}
 

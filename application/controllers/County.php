@@ -52,6 +52,21 @@ class County extends CI_Controller
     }
 
 
+
+
+
+     function show_county_by_id($pid)
+    {
+        $this->db->select('*');
+        $this->db->from('pending_shipment_details');
+        $this->db->where('pending_shipment_id', $pid);
+        $query = $this->db->get();
+        $query_result = $query->result();
+        return $query_result;
+     
+    }
+
+
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
