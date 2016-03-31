@@ -74,13 +74,34 @@
                             $facility_name= NULL;
 
 
+
+                         
+
                              ?>
 
-                            <?php foreach ($alert as $alert_object):?>
+                            <?php foreach ($alert as $alert_object):
+
+
+
+            foreach ($facility as $facility_object) {
+            if ($alert_object->facility_id==$facility_object->facility_id){
+             $facility_name = $facility_object->facility_name;
+
+            }
+            }
+
+
+    
+              foreach ($disease as $disease_object) {
+                if ($alert_object->disease_id == $disease_object->disease_id) {
+                  $disease_name = $disease_object->disease_name;
+                  
+                }
+              }?>
                              <tr>
                                     <td><?php echo $count; ?></td>
-                                    <td><?php $alert_object->disease_name;?></td>
-                                    <td><?php echo $alert_object->c_name; ?></td>
+                                    <td><?php echo $disease_name;?></td>
+                                    <td><?php echo $facility_name; ?></td>
                                     <td><?php echo $alert_object->age; ?></td>
                                     <td><?php echo $alert_object->sex; ?></td>
                                     <td><?php echo $alert_object->status; ?></td>
@@ -113,7 +134,7 @@
                                         </select>
                                         </div>
             
-                                        <div class="form-group"><label>County: </label>
+                        <!--                 <div class="form-group"><label>County: </label>
                         <select name="county_name" class="form-control" id="countyid" >
                         //onchange = "javascript:myFunction();"
 
@@ -136,7 +157,7 @@
                                                 }?> ><?php  echo $sub_county_object->sub_county_name;?>
                                                 </option>
                                         <?php endforeach;?>
-                                        </select></div>
+                                        </select></div> -->
 
 
 
@@ -163,7 +184,7 @@
                                 </div>
 
                 <div class="form-group"><label>Date:</label>
-                    <input type="text" required name="date" class="form-control" value="<?php echo $alert_object->date; ?>"></div>
+                    <input type="text" required name="date" class="form-control" value="<?php echo $alert_object->report_date; ?>"></div>
 
 
                                         </div>

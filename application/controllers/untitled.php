@@ -48,6 +48,7 @@ public function index()
         }                 
         else if($session_is_present == 2) {
                 $temp = $text;
+          
                 $temp = explode(',', $temp);//remove commas from the sting to identify each user input
                 $full_name = $temp[0];
                 $id_number = $temp[1];

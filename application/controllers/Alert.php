@@ -48,8 +48,7 @@ class Alert extends CI_Controller
         $data['sub_county']=$this->sub_county_model->show_sub_counties();
         $data['county'] = $this->county_model->show_counties();
         $this->load->view('alert',$data);
-        //print_r($data);
-
+      
     }
 
     public function save_alert(){

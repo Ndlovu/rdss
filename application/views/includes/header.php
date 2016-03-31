@@ -51,7 +51,9 @@
 
             <!-- <i class="fa fa-info-circle"></i> -->
             <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report">Weekly reports</a></li>
+
              <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/reports">USSD reports</a></li>
+             <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/tweet">Tweets reports</a></li>
               <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/users">Manage users</a></li>
              
             <li><li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/register">Register</a></li></li>
@@ -94,6 +96,10 @@
                 </li>
 
                   <?php  }?>
+                     <li>
+                    <a class="right-sidebar-toggle"><i class="fa fa-tasks"></i>
+                    </a>
+                </li>
 
 <!--   <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a> -->
 
@@ -101,3 +107,12 @@
 
         </nav>
         </div>
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 //<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-class Test extends CI_Controller
+class Tweet extends CI_Controller
 {
 
 
@@ -12,8 +12,8 @@ class Test extends CI_Controller
     }
 
 		public function index(){
-		$data['counties']=$this->county_model->show_counties();
-		$this->load->view('test', $data);
+		//$data['counties']=$this->county_model->show_counties();
+		$this->load->view('tweet');
 		//$this->get_by_id();
       //  var_dump($data);
 		
