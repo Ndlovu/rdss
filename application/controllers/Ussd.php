@@ -1,70 +1,87 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 class Ussd extends CI_Controller
 {
-function __construct()
-{
-  parent::__construct();
-
-  //loads the session model to the controller
-  $this->load->model('session_model');
-        
-    }
-public function index(){
-  $session_id = $this->input->post('sessionId');
-  $phone_number = $this->input->post('phoneNumber');
+  public function index(){
+  $sessionId = $this->input->post('sessionId');
+  $phoneNumber = $this->input->post('phoneNumber');
   $text = $this->input->post('text');
 
+  $record_id = uniqid();
 
-  //check if there are any current sessions running using the supplied credentials
-  $session_is_present = $this->session_model->check_if_session_exists($session_id, $phone_number);
-  if ($session_is_present==false){
-  
-    //created new session using user credentials: session id and phone number
-    $this->session_model->new_session($session_id, $phone_number);
-    
-        $response = "CON Register to rdss. Please use the format: full names, ID number, email.\n Format:george oliech,2121212 georgeoliech@gmail.com";
+  $this->load->model('session_model');
+  $session = $this->session_model->check_if_session_exists($sessionId, $phoneNumber);
 
-      }else if ($session_is_present == 1){
-        $temp = $text;
-        $temp = explode(',', $temp);//remove commas from the sting to identify each user input
-        $full_name = $temp[0];
-        $id_number = $temp[1];
-        $email_address =$temp[2]; 
-   
-      
-     $this->session_model->save_extra_information($session_id, $full_name, $id_number, $email_address);
+  if($session == false){
+  $this->session_model->new_session($sessionId, $phoneNumber, $record_id);
+  $response = "CON Select option: \n 1. Register \n 2. Single incident \n 3. Multiple incidents \n";
+  }elseif($session == 1){
+  $test_variable = $text;
+  if($test_variable == 1 ){
+  $step = 2;
+  $this->session_model->set_step($sessionId, $step);
+  $response = "END Register with us. Enter Full name, ID number, E-mail \n Format: george oliech,2121212 georgeoliech@gmail.com ";
 
-     $response = "CON Registration successful: Welcome \n report disease incident\n MFL_CODE,DISEASE_CODE,AGE,GENDER,STATUS
-             Format: PGH,CL,10,F,Alive";
-             
-      }else if($session_is_present==2) {
+  }else if($test_variable == 2){
+  $step = 3;
+  $this->session_model->set_step($sessionId, $step);
+  $response = "END Report incident. \n Enter mfl code, disease code, age, sex, status, date \n Format: PGH,CL,10,F,Alive \n";
 
-                  $temp = $text;
-                  $temp = explode('*', $temp);
-                  $temp = $temp[1];
-                  $temp = explode(',', $temp);
-                  $mfl_code = $temp[0];
-                  $disease_code = $temp[1];
-                  $age = $temp[2];
-                  $sex = $temp[3];
-                  $status = $temp[4];
-                  $this->session_model->save_incident_report($session_id, $mfl_code, $disease_code, $age, $sex, $status);
-                  $response = "END Thank You for using RDSS \n.";
+  }else if ($test_variable == 3){
+  $step = 4;
+  $this->session_model->set_step($sessionId, $step);
+  $response = "END Weekly report\n Enter facility code, disease code, reported cases, deaths, start date, end date \n Format: 21456, CHL, 30, 0, 20150305, 20150410";
 
-                }
-        
+  }else{
 
-        
+  $response = "END Incorrect input! Try again.";
 
-      // Print the response onto the page so that our gateway can read it
-     header('Content-type: text/plain');
-     echo $response;
-      
+  }
 
+  }
+  elseif ($session == 2) {
+  $temp = $text;
        
-    }
+  $temp = explode(',', $temp);//remove commas from the sting to identify each user input
+  $full_name = $temp[0];
+  $id_number = $temp[1];
+  $email_address =$temp[2]; 
+            
+  $this->session_model->save_extra_information($sessionId, $full_name, $id_number, $email_address);
+  $response ="END Thank you for registering.";
 
+  }elseif ($session == 3) {
+  $temp = $text;
+  $temp = explode('*', $temp);
+  $temp = $temp[1];
+  $temp = explode(',', $temp);
+  $mfl_code = $temp[0];
+  $disease_code = $temp[1];
+  $age = $temp[2];
+  $sex = $temp[3];
+  $status = $temp[4];
 
+  $this->session_model->save_incident_report($sessionId, $mfl_code, $disease_code, $age, $sex, $status);
+  $response = "END incident report successfully saved. \n."; 
+
+  }elseif ($session == 4) {
+  $temp = $text;
+  $temp = explode('*', $temp);
+  $temp = $temp[1];
+  $temp = explode(',', $temp);
+  $mfl_code = $temp[0];
+  $disease_code = $temp[1];
+  $number_of_incidents = $temp[2];
+  $deaths = $temp[3];
+  $start_date = $temp[4];
+  $end_date = $temp[5];
+  // save_weekly_report($session_id, $mfl_code, $disease_code, $number_of_incidents, $number_of_deaths, $start_date, $end_date)
+  $this->session_model->save_weekly_report($sessionId, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date);
+  $response = "END  Weekly report successfully saved\n.";
+  }
+  else{
+    $response = "END Incorrect input. Try again.";
+  }
+  echo $response;
+  } 
 }
-
 ?>

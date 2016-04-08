@@ -14,6 +14,7 @@ class Reports extends CI_Controller
         parent::__construct();
 
         $this->load->model('alert_model');
+        $this->load->model('welcome_model');
     }
 
     public function index()
@@ -30,6 +31,7 @@ class Reports extends CI_Controller
     }  
 
     function report_per_county(){
+        
         
     }  
 

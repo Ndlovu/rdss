@@ -34,8 +34,13 @@ class County_model extends CI_Model
         $this->db->from('county_table');
         $this->db->where('county_name', $county_name);
         $query = $this->db->get();
-        $result = $query->row()->county_id;
+        if ($query->num_rows()>0) {
+           $result = $query->row()->county_id;
         return $result;
+        }else{
+            return null;
+        }
+       
     }
 
     function show_county_names()

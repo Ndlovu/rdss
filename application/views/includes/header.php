@@ -17,11 +17,7 @@
                   <?php }?>
                 </div>
 
-                <!-- <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a> -->
-                        
-                     <!--    <div class="logo-element">IN+
-                        </div> -->
-                    </li>
+                  </li>
                     <li class="active">
                         <a href="<?php echo(base_url()); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <span class="fa arrow"></span></a>
                         
@@ -33,11 +29,14 @@
                         <ul class="nav nav-second-level">
 
                     
-                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/disease">Infectious disease(s)</a></li>
-                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/county">Counties</a></li>
-                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">Facilities</a></li>
-                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">Sub counties</a></li>
-                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">Issue alert</a></li>
+                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/disease">infectious disease(s)</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/county">counties</a></li>
+                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">facilities</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">sub counties</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">issue alert</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_by_county">view by county</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_user">view by user</a></li>
+
                                       
              </ul>
             </li>
@@ -45,15 +44,11 @@
             <?php } ?>
 
 
-<!--    <a href="#"><i class="fa fa-info-circle"></i> <span class="nav-label" style="font-size:16px">Reports</span><span
-                        class="fa fa-info-circl"></span></a>
-                        <ul class="nav nav-second-level"> -->
-
-            <!-- <i class="fa fa-info-circle"></i> -->
+          <!-- <i class="fa fa-info-circle"></i> -->
             <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report">Weekly reports</a></li>
 
              <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/reports">USSD reports</a></li>
-             <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/tweet">Tweets reports</a></li>
+             <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/view_twitter_reports">Tweets reports</a></li>
               <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/users">Manage users</a></li>
              
             <li><li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/register">Register</a></li></li>

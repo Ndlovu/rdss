@@ -23,6 +23,7 @@
     <link href="<?php echo(base_url()); ?>assets/css/plugins/switchery/switchery.css" rel="stylesheet">
 
     <link href="<?php echo(base_url()); ?>assets/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/js/map.js" rel="stylesheet">
 
     <link href="<?php echo(base_url()); ?>assets/css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
 

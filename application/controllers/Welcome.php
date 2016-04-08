@@ -9,21 +9,7 @@ class Welcome extends CI_Controller {
         'except' => array()
     );
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 
 
     function __construct()
@@ -31,6 +17,8 @@ class Welcome extends CI_Controller {
         parent::__construct();
 
 		   $this->load->model('welcome_model');
+		   $this->load->model('county_model');
+		   $this->load->model('user_model');
    }
 
 		public function index()
@@ -42,13 +30,11 @@ class Welcome extends CI_Controller {
 
 		}
 
-		// string(59) "[{"location":"Kwale County"},{"location":"Bungoma County"}]" 
-
-			public function disease_location(){
+		public function disease_location(){
 			$some_data = $this->welcome_model->map_disease_location();
 		    $some_data = json_encode($some_data);
 		   echo $some_data;
-		   //print_r($some_data);
+		   
 		  }
 		  public function map_ussd_locations(){
 
@@ -56,17 +42,46 @@ class Welcome extends CI_Controller {
 		  	$data = json_encode($data);
 		  	echo($data);
 		  }
+		  public function report_by_county(){
+		  	$county_name = $this->input->post('county_name');
+		  	$county_id = $this->county_model->get_county_id_given_name($county_name);
 
+		  	$values = $this->welcome_model->alerts_per_county();
+		  	$disease_report = null;
+            foreach ($values as $value) {
+     		   if ($value->cid == $county_id) {
+     		   	$disease_report[] = array(
+                                        "disease"=>$value->disease_name,
+                                        "age"=>$value->age,
+                                        "sex"=>$value->sex,
+                                        "date"=>$value->report_date,
+                                        "facility"=>$value->f_name,
+                                        "sub_county" =>$value->sub_county_name,
+                                        "status"=>$value->status);   
+                                           		
+        	}
+        	
+        	}
+        	$data['counties'] = $this->county_model->show_counties();
+        	$data['filter_by_county'] = $disease_report;
+        	$this->load->view('report_by_county', $data);
+
+	  }
+
+	  public function report_per_user(){
+	  	$user_name = $this->input->post('user_name');
+	  	 $user_id = $this->user_model->get_user_id_given_name($user_name);
+	  	// $user_id = "56c9b96a81422";
+	  	$data['filtered_by_user'] = $this->welcome_model->alerts_per_user($user_id);
+	  	$data['users'] = $this->user_model->get_all_users();
+	  	$this->load->view('report_per_user', $data);
+
+	  }
+
+	  public function view_twitter_reports(){
+		$this->load->view('tweet');
+		}
 
 
 
 }
-
-
-  /*$data = array (
-            'some_data' => $some_data
-    );
-    //$data['test_data'] = $some_data;
-       $this->load->view('welcome_message',$data);*/
-
-

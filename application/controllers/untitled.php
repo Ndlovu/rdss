@@ -11,7 +11,7 @@ public function index()
        if ( $session_is_present ==false) { 
         $new_session = $this->session_model->new_session($sessionId, $phoneNumber);
          $response  = "CON What would you want to do \n"; 
-         $response .= "1. Register \n"; 
+         $response .= "1. Register \n";
          $response .= "2. Report incident";
         } elseif ($session_is_present = 1) {
           $temp =$text;

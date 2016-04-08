@@ -93,6 +93,21 @@ class User_model extends CI_Model
         return $users->result();
     }
 
+    function get_user_id_given_name($user_name){
+        $this->db->select('user_id');
+        $this->db->from('user_table');
+        $this->db->where('names', $user_name);
+        $query = $this->db->get();
+        if ($query->num_rows()>0) {
+            $result = $query->row()->user_id;
+            return $result;
+        }
+        else{
+            return null;
+        }
+    }
+
+
 }
 
 ?>
