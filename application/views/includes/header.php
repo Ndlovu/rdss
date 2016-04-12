@@ -35,6 +35,8 @@
                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">sub counties</a></li>
                      <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">issue alert</a></li>
                      <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_by_county">view by county</a></li>
+                     <!-- report_per_sub_county -->
+                       <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_sub_county">view by sub-county</a></li>
                      <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_user">view by user</a></li>
 
                                       

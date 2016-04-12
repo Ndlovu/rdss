@@ -19,14 +19,14 @@ class Welcome extends CI_Controller {
 		   $this->load->model('welcome_model');
 		   $this->load->model('county_model');
 		   $this->load->model('user_model');
+		   $this->load->model('sub_county_model');
+		   $this->load->model('message_model');
    }
 
 		public function index()
 		{
 			$this->load->view('welcome_message');
-			//$this->disease_location();
-			// $this->map_ussd_locations();
-			
+				
 
 		}
 
@@ -70,16 +70,42 @@ class Welcome extends CI_Controller {
 
 	  public function report_per_user(){
 	  	$user_name = $this->input->post('user_name');
-	  	 $user_id = $this->user_model->get_user_id_given_name($user_name);
-	  	// $user_id = "56c9b96a81422";
-	  	$data['filtered_by_user'] = $this->welcome_model->alerts_per_user($user_id);
+	   $user_id = $this->user_model->get_user_id_given_name($user_name);
+	   	$data['filtered_by_user'] = $this->welcome_model->alerts_per_user($user_id);
 	  	$data['users'] = $this->user_model->get_all_users();
+	  	$data['messages'] = $this->message_model->get_messages();
 	  	$this->load->view('report_per_user', $data);
 
 	  }
 
 	  public function view_twitter_reports(){
 		$this->load->view('tweet');
+		}
+
+		public function report_per_sub_county(){
+			$sub_county_name = $this->input->post('sub_county_name');
+			$sub_county_id = $this->sub_county_model->get_sub_county_id_given_name($sub_county_name);
+
+			$values = $this->welcome_model->alerts_per_sub_county();
+			$disease_per_sub = null;
+			foreach ($values as $value) {
+				if ($value->sub_id == $sub_county_id) {
+				$disease_per_sub = array(
+                                        "disease"=>$value->disease_name,
+                                        "age"=>$value->age,
+                                        "sex"=>$value->sex,
+                                        "date"=>$value->report_date,
+                                        "facility"=>$value->f_name,
+                                        "sub_county" =>$value->sub_county_name,
+                                        "status"=>$value->status);   
+                                           		
+					
+				}
+			}
+			$data['sub_counties'] = $this->sub_county_model->show_sub_counties();
+			$data['filtered_data']= $disease_per_sub;
+			$this->load->view('report_per_sub_county', $data);
+
 		}
 
 

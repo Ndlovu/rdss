@@ -13,7 +13,7 @@ class Sub_county_model extends CI_Model
         return $result;
     }
 
-// Function To Fetch All Sub-ounties Record
+    // Function To Fetch All Sub-ounties Record
     function show_sub_county($limit, $start)
     {
         $this->db->order_by('sub_county_name', 'asc');
@@ -40,18 +40,25 @@ class Sub_county_model extends CI_Model
         $this->db->update('sub_county_table', $data);
     }
    
-function get_sub_county_id_given_name($sub_county_name)
+    
+
+    function get_sub_county_id_given_name($sub_county_name)
     {
         $this->db->select('sub_county_id');
         $this->db->from('sub_county_table');
         $this->db->where('sub_county_name', $sub_county_name);
         $query = $this->db->get();
-        $result = $query->row()->sub_county_id;
+        if ($query->num_rows()>0) {
+            $result = $query->row()->sub_county_id;
         return $result;
+            
+        }else{
+            return null;
+        }
+        
     }
 
-
-
+   
     function show_sub_county_by_county_id($county_id)
     {
         $this->db->select('*');

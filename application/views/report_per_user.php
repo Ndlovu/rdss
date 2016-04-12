@@ -51,8 +51,74 @@
                                     <td><?php echo $filtered_object->age; ?></td>
                                      <td><?php echo $filtered_object->sex; ?></td>
                                     <td><?php echo $filtered_object->status; ?></td>
-                                     <td></td>
-                                      <td></td>
+                                     <td><?php echo $filtered_object->report_date; ?></td>
+                                     <td data-toggle="modal" data-target="#myModal_<?php $filtered_object->alert_id;?>"><i class="fa fa-envelope"></i>
+                    <div class="modal inmodal"  id="myModal_<?php $filtered_object->alert_id;?>" tabindex="-1" role="dialog" aria-hidden="true">
+                               <div class="modal-dialog">
+                                    <div class="modal-content animated bounceInRight">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <i class="fa fa-laptop modal-icon"></i>
+                                            <h4 class="modal-title">Alert messages</h4>messages</small>
+                                        </div>
+                                       
+                <!-- this is the comment section -->
+
+                 <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>comments on incident</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                        <!--         <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#">Config option 1</a>
+                                    </li>
+                                    <li><a href="#">Config option 2</a>
+                                    </li>
+                                </ul> -->
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            <ul class="list-group">
+                            <?php foreach($messages as $msg):
+                            if ($msg->alert_id == $filtered_object->alert_id ){?>
+
+                                <li class="list-group-item">
+                                    <p><a class="text-info" href="#"><?php echo $msg->user_name;?></a> <?php echo $msg->message;?></p>
+                                    <small class="block text-muted"><i class="fa fa-clock-o"></i><?php echo " ".$msg->date_time;?></small>
+                                </li>
+                            <?php } endforeach;?>
+                               </ul>
+                        </div>
+                    </div>
+
+
+                             <form action="<?= base_url();?>index.php/messages/submit_message" method="post" enctype="multipart/form-data">  
+                            <div class="modal-body">
+                        <input type="hidden" name="alert_id" value="<?php echo $filtered_object->alert_id; ?>" class="form-control">
+                        <div class="form-group"><label>Message:</label>
+                        <input type="text" required name="message" class="form-control" ></div>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                 <button type="submit" class="btn btn-primary">send message</button>
+                                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                          
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                            </td> 
 
                                 </tr>
 

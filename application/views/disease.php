@@ -70,7 +70,7 @@
                                              <button type="submit" class="btn btn-primary">Save changes</button>
 
                                              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                           <!--  <input type="submit" id="submit" name="dsubmit" value="Update"> -->
+                                           
                                         </div>
                                     </form>
                                     </div>

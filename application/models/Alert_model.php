@@ -40,13 +40,7 @@ class Alert_model extends CI_Model
 
         }
 
-
-        function show_report_by_user(){
-
-            
-        }
-
-   
+  
 }
 ?>
 

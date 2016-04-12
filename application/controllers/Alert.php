@@ -58,12 +58,6 @@ class Alert extends CI_Controller
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
        // $user_id="4323wrw234";
         $user_id= $this->session->userdata('user_id');
-        /*$county_name = $this->input->post('county_name');
-        $county_id = $this->county_model->get_county_id_given_name($county_name);
-
-        $sub_county_name = $this->input->post('sub_county_name');
-        $sub_county_id = $this->sub_county_model->get_sub_county_id_given_name($sub_county_name);*/
-
         $facility_name = $this->input->post('facility_name');
         $facility_id = $this->facility_model->get_facility_id_given_name($facility_name);
 

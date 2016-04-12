@@ -71,11 +71,7 @@
                             <?php $count=1;
                             $county_name = NULL;
                             $sub_county_name = NULL;
-                            $facility_name= NULL;
-
-
-
-                         
+                            $facility_name= NULL;                   
 
                              ?>
 
