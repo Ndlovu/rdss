@@ -74,6 +74,7 @@ class Welcome extends CI_Controller {
 	   	$data['filtered_by_user'] = $this->welcome_model->alerts_per_user($user_id);
 	  	$data['users'] = $this->user_model->get_all_users();
 	  	$data['messages'] = $this->message_model->get_messages();
+	  	
 	  	$this->load->view('report_per_user', $data);
 
 	  }

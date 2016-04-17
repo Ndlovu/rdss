@@ -43,26 +43,80 @@
                             <?php $count = 1;
                             foreach($filtered_by_user as $filtered_object):?>
                                 <tr>
-                                    <td>
-                                        <?php echo $count;?>
-                                    </td>
+                                <td><?php echo $count;?></td>
                                     <td><?php echo $filtered_object->disease_name; ?></td>
                                     <td><?php echo $filtered_object->f_name.", ". $filtered_object->sub_county_name ; ?></td>
                                     <td><?php echo $filtered_object->age; ?></td>
                                      <td><?php echo $filtered_object->sex; ?></td>
                                     <td><?php echo $filtered_object->status; ?></td>
                                      <td><?php echo $filtered_object->report_date; ?></td>
-                                     <td data-toggle="modal" data-target="#myModal_<?php $filtered_object->alert_id;?>"><i class="fa fa-envelope"></i>
-                    <div class="modal inmodal"  id="myModal_<?php $filtered_object->alert_id;?>" tabindex="-1" role="dialog" aria-hidden="true">
+                <td data-toggle="modal" data-target="#myModal_<?php echo $filtered_object->alert_id; ?>"><i class="fa fa-envelope"></i>
+<?php 
+$message_count=0;
+foreach ($messages as $value) {
+    if ($value->alert_id == $filtered_object->alert_id) {
+       $message_count++;
+    }
+} 
+
+if ($message_count > 0) {
+?>
+<span class="label label-primary"><?php echo $message_count; ?></span>
+<?php
+}
+
+
+?>
+                                         <div class="modal inmodal" id="myModal_<?php echo $filtered_object->alert_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <i class="fa fa-laptop modal-icon"></i>
-                                            <h4 class="modal-title">Alert messages</h4>messages</small>
+                                            <h4 class="modal-title">messages</h4>
+                                            <small class="font-bold">messages.</small>
                                         </div>
-                                       
-                <!-- this is the comment section -->
+
+                           
+                                    <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Alert messages</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">disease</small>
+                                <h5><?php echo $filtered_object->disease_name; ?></h5>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">location</small>
+                                <h5><?php echo $filtered_object->f_name.", ". $filtered_object->sub_county_name ; ?></h5>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">age</small>
+                                <h5><?php echo $filtered_object->age; ?></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <small class="stats-label">sex</small>
+                                <h5><?php echo $filtered_object->sex; ?></h5>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <small class="stats-label">status</small>
+                                <h5><?php echo $filtered_object->status; ?></h5>
+                            </div>
+                            <div class="col-xs-4">
+                                <small class="stats-label">date</small>
+                                <h5><?php echo $filtered_object->report_date; ?></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                  <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -74,13 +128,7 @@
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     <i class="fa fa-wrench"></i>
                                 </a>
-                        <!--         <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul> -->
-                                <a class="close-link">
+                                    <a class="close-link">
                                     <i class="fa fa-times"></i>
                                 </a>
                             </div>
@@ -89,18 +137,13 @@
                             <ul class="list-group">
                             <?php foreach($messages as $msg):
                             if ($msg->alert_id == $filtered_object->alert_id ){?>
-
                                 <li class="list-group-item">
                                     <p><a class="text-info" href="#"><?php echo $msg->user_name;?></a> <?php echo $msg->message;?></p>
                                     <small class="block text-muted"><i class="fa fa-clock-o"></i><?php echo " ".$msg->date_time;?></small>
                                 </li>
-                            <?php } endforeach;?>
+                                <?php } endforeach;?>
                                </ul>
-                        </div>
-                    </div>
-
-
-                             <form action="<?= base_url();?>index.php/messages/submit_message" method="post" enctype="multipart/form-data">  
+<form action="<?= base_url();?>index.php/messages/submit_message" method="post" enctype="multipart/form-data">  
                             <div class="modal-body">
                         <input type="hidden" name="alert_id" value="<?php echo $filtered_object->alert_id; ?>" class="form-control">
                         <div class="form-group"><label>Message:</label>
@@ -115,6 +158,9 @@
                                           
                                         </div>
                                     </form>
+
+                        </div>
+                    </div>
                                     </div>
                                 </div>
                             </div>
