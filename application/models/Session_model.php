@@ -43,7 +43,8 @@ class Session_model extends CI_Model
         $this->db->insert('session', $data);
     }
 
-     public function save_extra_information($session_id, $full_name, $id_number, $email_address, $phone_number){
+     public function save_extra_information($full_name, $id_number, $email_address, $phone_number){
+        // save_extra_information($full_name, $id_number, $email_address, $phoneNumber)
         $data = array(  'full_name'=>$full_name,
                         'id_number'=>$id_number,
                         'email_address'=>$email_address,
@@ -88,32 +89,45 @@ class Session_model extends CI_Model
    }
 
 
-     public function save_incident_report($session_id, $mfl_code, $disease_code, $age, $sex, $status){
-        $data = array(/*$sessionId, $full_name, $id_number, $email_address*/
-            'session_id' => $session_id,
+     public function save_incident_report($phone_number, $mfl_code, $disease_code, $age, $sex, $status, $date, $record_id){
+        
+        $user_id = $this->getUserid($phone_number);
+        $data = array(
+            'alert_id'=>$record_id,
+            'user_id' => $user_id,
             'mfl_code' => $mfl_code,
             'disease_code' => $disease_code,
             'age'=> $age,
             'sex' => $sex,
-            'status' => $status
-        );
-
-        $this->db->where('session_id', $session_id);
-         $this->db->update('sessions', $data);
+            'status' => $status,
+            'date'=>$date);
+        
+         $this->db->insert('alert_tables', $data);
 
     }
+    function save_weekly_report($phoneNumber, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date, $record_id){
 
-       function save_weekly_report($session_id, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date){
+    $user_id = $this->getUserid($phoneNumber);
     $data =array('mfl_code' => $mfl_code,
                 'disease_code'=>$disease_code,
                 'number_of_incidents'=>$number_of_incidents,
-                'number_of_deaths'=>$number_of_deaths,
+                'number_of_deaths'=>$deaths,
                 'date_from' =>$start_date,
-                );
+                'date_to'=>$end_date,
+                'user_id'=>$user_id,
+                'record_id' => $record_id);
 
-    // $this->db->where('session_id',$session_id);
     $this->db->update('weekly_ussd_reports', $data);
 
+   }
+
+   function getUserid($phoneNumber){
+    $this->db->select('user_id');
+    $this->db->from('user_table');
+    $this->db->where('phone_number', $phoneNumber);
+    $query = $this->db->get();
+    $result = $query->row()->user_id;
+    return $result;
    }
 
 

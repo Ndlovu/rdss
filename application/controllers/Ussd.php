@@ -23,6 +23,7 @@ class Ussd extends CI_Controller
       $response .= "Enter full names, national ID, email";
       $response .= "Format: Derrick Oloo, 12893465, derrickOloo@gmail.com";
       }elseif($session_is_present == 1){
+
         $temp_variable = $text;
         $temp_variable = explode(",", $temp_variable);
         $full_name = $temp_variable[0];
@@ -35,9 +36,7 @@ class Ussd extends CI_Controller
     }
 
   }else{
-    //code to be executed if the user has registered
-    // $this->sessions_model->new_session($sessionId, $phoneNumber, $key);
-    $session_is_present = $this->sessions_model->check_if_session_exists($sessionId, $phoneNumber);
+       $session_is_present = $this->sessions_model->check_if_session_exists($sessionId, $phoneNumber);
     if ($session_is_present == false) {
        $this->sessions_model->new_session($sessionId, $phoneNumber, $key);
 
@@ -49,6 +48,7 @@ class Ussd extends CI_Controller
         $step = 2;
         $this->sessions_model->set_step($sessionId, $step);
         $response = "END Report incident. \n Enter mfl code, disease code, age, sex, status, date \n Format: PGH,CL,10,F,Alive \n";
+
       }elseif ($temp_variable == 2) {
         $step = 3;
           $this->sessions_model->set_step($sessionId, $step);
@@ -67,12 +67,29 @@ class Ussd extends CI_Controller
       $age = $temp[2];
       $sex = $temp[3];
       $status = $temp[4];
+      $date = $temp[5];
+      $record_id = uniqid();
+      $is_disease_valid = $this->sessions_model->check_disease($disease_code);
+      if ($is_disease_valid == false) {
+        $response = "END Incorrect disease code. Please try again.";
+      }else{
+        $is_facility_valid = $this->sessions_model->check_mfl_code($mfl_code);
+        if ($is_facility_valid == false) {
+          $response = "END Incorrect facility code. Please try again";
+        }else{
 
-      $this->sessions_model->save_incident_report($sessionId, $mfl_code, $disease_code, $age, $sex, $status);
-      $response = "END incident report successfully saved. \n."; 
+          $this->sessions_model->save_incident_report($phoneNumber, $mfl_code, $disease_code, $age, $sex, $status, $date, $record_id);
+          $response = "END $is_disease_valid incident report for $is_facility_valid successfully saved. \n.";
+
+        }
+      }
+
+     /* $this->sessions_model->save_incident_report($phoneNumber, $mfl_code, $disease_code, $age, $sex, $status, $date);
+      $response = "END incident report successfully saved. \n."; */
 
     }elseif ($session_is_present == 3) {
-    $temp = $text;
+      
+      $temp = $text;
       $temp = explode('*', $temp);
       $temp = $temp[1];
       $temp = explode(',', $temp);
@@ -82,9 +99,25 @@ class Ussd extends CI_Controller
       $deaths = $temp[3];
       $start_date = $temp[4];
       $end_date = $temp[5];
+      $record_id = uniqid();
       
-      $this->sessions_model->save_weekly_report($sessionId, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date);
-      $response = "END  Multiple incident report successfully saved\n.";
+            $is_disease_valid = $this->sessions_model->check_disease($disease_code);
+      if ($is_disease_valid == false) {
+        $response = "END Incorrect disease code. Please try again.";
+      }else{
+        $is_facility_valid = $this->sessions_model->check_mfl_code($mfl_code);
+        if ($is_facility_valid == false) {
+          $response = "END Incorrect facility code. Please try again";
+        }else{
+
+  $this->sessions_model->save_weekly_report($phoneNumber, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date, $record_id);
+          $response = "END $is_disease_valid mulitple incident report for $is_facility_valid successfully saved. \n.";
+
+        }
+      }
+    /*$this->sessions_model->save_weekly_report($sessionId, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date);
+      $response = "END  Multiple incident report successfully saved\n.";*/
+
     }
     else{
       $response = "END Technical error. Please try again";
