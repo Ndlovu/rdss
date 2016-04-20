@@ -1,6 +1,6 @@
 <?php
-class Session_model extends CI_Model
-{
+class Session_model extends CI_Model {
+
     public function check_user_status($phone_number){
         $this->db->where('phone_number', $phone_number);
         $query = $this->db->get('user_table');
@@ -44,26 +44,24 @@ class Session_model extends CI_Model
     }
 
      public function save_extra_information($full_name, $id_number, $email_address, $phone_number){
-        // save_extra_information($full_name, $id_number, $email_address, $phoneNumber)
-        $data = array(  'full_name'=>$full_name,
+       $data = array(  'full_name'=>$full_name,
                         'id_number'=>$id_number,
                         'email_address'=>$email_address,
                         'phone_number'=>$phone_number);
 
-         // $this->db->where('session_id', $session_id);
-         $this->db->insert('user_table', $data);
+        $this->db->insert('user_table', $data);
 
     }
 
-    function set_step($session_id,$step){
-    $data = array('input_step' => $step);
-    $this->db->where('session_id',$session_id);
-    $this->db->update('session', $data);
-}
+        function set_step($session_id,$step){
+        $data = array('input_step' => $step);
+        $this->db->where('session_id',$session_id);
+        $this->db->update('session', $data);
+    }
 
 
     function check_mfl_code($mfl_code){
-            $this->db->select("");
+            $this->db->select("facility_name");
             $this->db->where('mfl_code', $mfl_code);
             $query = $this->db->get('facility_table');
             if($query->num_rows() > 0){
@@ -76,6 +74,7 @@ class Session_model extends CI_Model
         }
 
     function check_disease($disease_code){
+        $this->db->select("disease_name");
         $this->db->where('disease_acronym', $disease_code);
         $query = $this->db->get('disease_table');
         if ($query->num_rows()>0) {
@@ -103,11 +102,15 @@ class Session_model extends CI_Model
             'date'=>$date);
         
          $this->db->insert('alert_tables', $data);
-
     }
+
     function save_weekly_report($phoneNumber, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date, $record_id){
 
     $user_id = $this->getUserid($phoneNumber);
+    $disease_id = $this->get_disease_id($disease_code);
+    $facility_id = $this->
+
+
     $data =array('mfl_code' => $mfl_code,
                 'disease_code'=>$disease_code,
                 'number_of_incidents'=>$number_of_incidents,
@@ -116,7 +119,6 @@ class Session_model extends CI_Model
                 'date_to'=>$end_date,
                 'user_id'=>$user_id,
                 'record_id' => $record_id);
-
     $this->db->update('weekly_ussd_reports', $data);
 
    }
@@ -130,6 +132,26 @@ class Session_model extends CI_Model
     return $result;
    }
 
+   public function get_disease_id($disease_code)
+   {
+    $this->db->select('disease_id');
+    $this->db->from('disease_table');
+    $this->db->where('disease_acronym', $disease_code);
+    $query = $this->db->get();
+    $result = $query->row()->disease_id;
+    return $result;
+   }
+
+
+   public function get_facility_id($mfl_code)
+   {
+    $this->db->select('facility_id');
+    $this->db->from('facility_table');
+    $this->db->where('mfl_code', $mfl_code);
+    $query = $this->db->get();
+    $result = $query->row()->facility_id;
+    return $result;
+   }
 
 } 
 ?>
