@@ -108,7 +108,7 @@ class Session_model extends CI_Model {
 
     $user_id = $this->getUserid($phoneNumber);
     $disease_id = $this->get_disease_id($disease_code);
-    $facility_id = $this->
+    $facility_id = $this->get_facility_id();
 
 
     $data =array('mfl_code' => $mfl_code,

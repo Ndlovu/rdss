@@ -83,14 +83,14 @@
                               <td><?php echo $weekly_report->c_name;?></td>
                                  <td><?php echo $weekly_report->sub_name;?></td>
                                  <td><?php echo $weekly_report->f_name;?></td>
-                                      <td><?php echo $weekly_report->number_of_cases;?></td>
-                                       <td><?php  echo $weekly_report->deaths;?></td>
-                                       <td><?php  echo $weekly_report->start_date;?></td>
-                                       <td><?php  echo $weekly_report->end_date;?></td>
-                                       <td data-toggle="modal" data-target="#myModal_<?php echo $weekly_report->weekly_record_id; ?>"><i class="fa fa-wrench"></i>
+                                      <td><?php echo $weekly_report->number_of_incidents;?></td>
+                                       <td><?php  echo $weekly_report->number_of_deaths;?></td>
+                                       <td><?php  echo $weekly_report->date_from;?></td>
+                                       <td><?php  echo $weekly_report->date_to;?></td>
+                                       <td data-toggle="modal" data-target="#myModal_<?php echo $weekly_report->report_id; ?>"><i class="fa fa-wrench"></i>
     
 
-    <div class="modal inmodal"  id="myModal_<?php echo $weekly_report->weekly_record_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal inmodal"  id="myModal_<?php echo $weekly_report->report_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
                                         <div class="modal-header">
@@ -103,7 +103,7 @@
 
                  
 
-                                       <div class="form-group"><input type="hidden" name="alert_id" value="<?php echo $weekly_report->weekly_record_id; ?>" class="form-control"></div>
+                                       <div class="form-group"><input type="hidden" name="alert_id" value="<?php echo $weekly_report->report_id; ?>" class="form-control"></div>
                                        <div class="form-group"><label>Disease: </label> <select name="disease_name"class="form-control">
                                        <option value = "">[Select]</option>
 
@@ -154,11 +154,11 @@
                             </select></div>
 
     <div class="form-group"><label>number of incidents:</label>
-            <input type="text" required name="number_of_deaths" class="form-control" value="<?php echo $weekly_report->number_of_cases; ?>">
+            <input type="text" required name="number_of_deaths" class="form-control" value="<?php echo $weekly_report->number_of_incidents; ?>">
                     </div>
 
         <div class="form-group"><label>number of deaths:</label>
-            <input type="text" required name="sex" class="form-control" value="<?php echo $weekly_report->deaths; ?>">
+            <input type="text" required name="sex" class="form-control" value="<?php echo $weekly_report->number_of_deaths; ?>">
         </div>
 
   
@@ -254,7 +254,7 @@
                              
 
                       <div class="form-group" id="data_5">
-                                <label class="font-noraml">select week</label>
+                                <label>select week</label>
                                 <div class="input-daterange input-group" id="datepicker">
                                     <input type="text" class="input-sm form-control" name="start_date" value="05/14/2014"/>
                                     <span class="input-group-addon">to</span>
