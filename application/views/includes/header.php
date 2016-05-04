@@ -13,31 +13,35 @@
                   <?php } else { ?>
                   <!-- <a style="font-size:15px"href="<?php echo(base_url()); ?>index.php/login">Login</a> -->
                   <!-- <a href="<?php echo(base_url()); ?>index.php/login"><i class="fa fa-user"></i> login</a> -->
-                  <a style="font-size:15px"><i>IDENTITIES TECH</i></a>
+                  <a style="font-size:15px"><i></i></a>
                   <?php }?>
                 </div>
-
                   </li>
                     <li class="active">
-                        <a href="<?php echo(base_url()); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <span class="fa arrow"></span></a>
+                        <a href="<?php echo(base_url()); ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> <!-- <span class="fa arrow"></span> --></a>
                         
                     </li>
-        <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
-                   <li>
-            <a href="#"><i class="fa fa-wrench"></i> <span class="nav-label" style="font-size:16px">Settings</span><span
-                        class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
+ <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
+                    <li>
+                        <a href="<?php echo(base_url()); ?>index.php/alert"><i class="fa fa-exclamation"></i> <span class="nav-label" style="font-size:16px">Issue alert</span><!-- <span
+                        class="fa arrow"></span> --></a></li>
+                     <?php }?>
 
-                    
-                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/disease">infectious disease(s)</a></li>
+
+        <?php if($this->session->userdata('role') == "admin" ){?>
+                   <li>
+            <a href="#"><i class="fa fa-gears"></i> <span class="nav-label" style="font-size:16px">Settings</span><span
+                        class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">                    
+                 <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/disease">diseases</a></li>
                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/county">counties</a></li>
                     <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">facilities</a></li>
                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">sub counties</a></li>
-                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">issue alert</a></li>
-                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_by_county">view by county</a></li>
-                     <!-- report_per_sub_county -->
-                       <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_sub_county">view by sub-county</a></li>
-                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_user">view by user</a></li>
+                    <!-- <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">issue alert</a></li> -->
+              <!--       <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_by_county">view by county</a></li>
+                      report_per_sub_county 
+                       <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_sub_county">view by sub county</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_user">view by user</a></li> -->
 
                                       
              </ul>
@@ -46,14 +50,45 @@
             <?php } ?>
 
 
-          <!-- <i class="fa fa-info-circle"></i> -->
-            <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report">Weekly reports</a></li>
+              <li>
+                 <a href="#"><i class="fa fa-list"></i> <span class="nav-label" style="font-size:16px">Reports</span><span
+                        class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                        <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_by_county">view by county</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_sub_county">view by sub county</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_user">view by user</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report"><!-- <i class="fa fa-list"> --></i>Weekly reports</a></li>
+                        </ul></li>
 
-             <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/reports">USSD reports</a></li>
-             <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/view_twitter_reports">Tweets reports</a></li>
-              <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/users">Manage users</a></li>
-             
+
+          <!-- <i class="fa fa-info-circle"></i> -->
+          <!--   <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report"><i class="fa fa-list"></i>Weekly reports</a></li> -->
+
+            <!--  <ul class="nav nav-second-level">                    
+                 <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/disease">infectious disease(s)</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/county">counties</a></li>
+                    <li><a  class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/facility">facilities</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/sub_county">sub counties</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert">issue alert</a></li>
+                    <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_by_county">view by county</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_sub_county">view by sub county</a></li>
+                     <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_user">view by user</a></li>                        
+             </ul> -->
+
+            <li><a href="<?php echo(base_url()); ?>index.php/welcome/view_twitter_reports"><i class="fa fa-twitter fa-fw"></i><span class="nav-label" style="font-size:16px">Tweet tracker</span></a></li>
+
+
+
+        <?php if($this->session->userdata('role') == "admin" ){ ?>
+              <li><a href="<?php echo(base_url()); ?>index.php/users"><i class="fa fa-group"></i><span class="nav-label" style="font-size:16px">Manage users</span> </a></li>
+ <?php } ?>
+              <!--  <a href="#"><i class="fa fa-list"></i> <span class="nav-label" style="font-size:16px">Reports</span><span
+                        class="fa arrow"></span></a> -->
+
+
+              <?php if($this->session->userdata('role')=="" || $this->session->userdata('role')==""){ ?>
             <li><li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/register">Register</a></li></li>
+             <?php  }?>
 
               <!--    </ul>
             </li>

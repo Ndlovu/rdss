@@ -2,11 +2,8 @@
 class Test extends CI_Controller
 {
 	public function index(){
-		$this->load->model("alert_model");
-		$value = $this->alert_model->show_weekly_reports();
-		print_r($value);
-		
-        
+		$this->load->view('test');
+
         }
 
 

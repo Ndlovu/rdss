@@ -83,7 +83,7 @@
     <link href="<?php echo(base_url()); ?>assets/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
 
     <!-- Data picker -->
-   <script src="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
   
 
@@ -95,87 +95,91 @@
 
 
     <!-- Mainly scripts -->
-    <script src="<?php echo(base_url()); ?>assets/js/jquery-2.1.1.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/bootstrap.min.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="<?php echo(base_url()); ?>assets/js/inspinia.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/pace/pace.min.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/inspinia.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/pace/pace.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Chosen -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/chosen/chosen.jquery.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/chosen/chosen.jquery.js"></script>
 
    <!-- JSKnob -->
-   <script src="<?php echo(base_url()); ?>assets/js/plugins/jsKnob/jquery.knob.js"></script>
+   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/jsKnob/jquery.knob.js"></script>
 
    <!-- Input Mask-->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/jasny/jasny-bootstrap.min.js"></script>
 
    <!-- Data picker -->
-   <script src="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
    <!-- NouSlider -->
-   <script src="<?php echo(base_url()); ?>assets/js/plugins/nouslider/jquery.nouislider.min.js"></script>
+   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/nouslider/jquery.nouislider.min.js"></script>
 
    <!-- Switchery -->
-   <script src="<?php echo(base_url()); ?>assets/js/plugins/switchery/switchery.js"></script>
+   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/switchery/switchery.js"></script>
 
     <!-- IonRangeSlider -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
 
     <!-- iCheck -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/iCheck/icheck.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/iCheck/icheck.min.js"></script>
 
     <!-- MENU -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Color picker -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
 
     <!-- Image cropper -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/cropper/cropper.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/cropper/cropper.min.js"></script>
 
 
 
     <!-- Mainly scripts -->
-    <script src="<?php echo(base_url()); ?>assets/js/jquery-2.1.1.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script  type="text/javascript" src="<?php echo(base_url()); ?>assets/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
     <!-- Flot -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.spline.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.js"></script>
+    <script  type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script  type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
 
     <!-- Peity -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/peity/jquery.peity.min.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/demo/peity-demo.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/peity/jquery.peity.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/demo/peity-demo.js"></script>
 
     <!-- Custom and plugin javascript -->
-    <script src="<?php echo(base_url()); ?>assets/js/inspinia.js"></script>
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/pace/pace.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/inspinia.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/pace/pace.min.js"></script>
 
     <!-- jQuery UI -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
     <!-- GITTER -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/gritter/jquery.gritter.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/gritter/jquery.gritter.min.js"></script>
 
     <!-- Sparkline -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Sparkline demo data  -->
-    <script src="<?php echo(base_url()); ?>assets/js/demo/sparkline-demo.js"></script>
+    <script type="text/javascript"  src="<?php echo(base_url()); ?>assets/js/demo/sparkline-demo.js"></script>
 
     <!-- ChartJS-->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/chartJs/Chart.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/chartJs/Chart.min.js"></script>
 
     <!-- Toastr -->
-    <script src="<?php echo(base_url()); ?>assets/js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/toastr/toastr.min.js"></script>
+
+     <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/reports.js"></script>
+     <!-- <script type="text/javascript" src="assets/template/js/plugins/morris/morris.min.js"></script> -->
+
 
 
 

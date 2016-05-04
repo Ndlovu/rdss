@@ -26,7 +26,6 @@
 
       );
   }
-
 </script>
 
 
@@ -36,6 +35,7 @@
             <h2>weekly report</h2>
 
         </div>
+         <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
         <div class="col-sm-8">
             <div class="title-action">
                 <a href="#"  data-toggle="modal" data-target="#add_alert" class="btn btn-primary">Add an alert</a>
@@ -43,6 +43,7 @@
 
             </div>
         </div>
+        <?php}?>
     </div>
     <div class="wrapper wrapper-content">
        <div class="col-lg-12">

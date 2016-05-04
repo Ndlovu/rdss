@@ -6,8 +6,7 @@
             <h2>view alerts per county</h2>
          </div>
         <div class="col-sm-8">
-           
-        </div>
+           </div>
     </div>
 
 
@@ -21,8 +20,9 @@
 <?php endforeach; ?>
                         </select></div>
                     <div class="col-sm-5"><button type="submit" class="btn btn-primary">Get report for this county</button></div>
+</div>
+</form>
 
-             </form>
 <?php if(isset($filtered_data)){?>
 <table class="table">
                             <thead>

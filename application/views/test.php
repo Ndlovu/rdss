@@ -1,21 +1,6 @@
-<?php
+<?php require_once("includes/header.php"); ?>
+     <div class = 'btn btn-default btn-md' style = 'margin-bottom:5px; width:100%' onclick='javascript:ARTAnalytics()'>
+                                            ART Reports
+                                        </div>
 
-
-foreach ($filter_by_county as $value){
-    echo($value['disease']);
-    // echo($value->disease);
-   
-}
-
-
-
-
-
-
-
-
-
-
-
-
-?>
+<?php require_once("includes/footer.php"); ?>
