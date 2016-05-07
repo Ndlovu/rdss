@@ -2,10 +2,6 @@
 
 <div class="row  border-bottom white-bg dashboard-header">
 
-
-      
-
-
 <div class="col-sm-6"><!-- <h2>Real-time Disease Monitoring Tool</h2> -->
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
       <input id="fe" type="button" value="Find locations">
@@ -28,8 +24,7 @@
                 // draggable: false,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 center: new google.maps.LatLng(-1.292066, 36.821946),
-               
-            };
+               };
 
             // Get all html elements for map
             var mapElement1 = document.getElementById('map1');

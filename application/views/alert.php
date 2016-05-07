@@ -1,36 +1,5 @@
 <?php require_once("includes/header.php"); ?>
 
-<script>
-  function myFunction() 
-  {
-      var base_url = "<?= base_url();?>";
-      var item = document.getElementById("countyid");
-      var itemIndex = item.selectedIndex;
-      var itemSelected = item[itemIndex].value;
-     var url = base_url+"alert/get_sub_county_by_id";
-     $.getJSON
-      (
-        url,
-        {county_name:itemSelected},
-        function(dataReceived)
-        {
-          /*NOTES:
-            0 - funding agency id
-            1 - funding agency name
-            2 - commodity id
-            3 - commodity name
-          */
-          $("#selected_sub_county").html(dataReceived[1]);
-         
-        }
-
-      );
-  }
-  
-</script>
-
-
-
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>disease incidents</h2>
@@ -114,9 +83,7 @@
                                             <h4 class="modal-title">Edit alert</h4>Update and delete details about a particular alert</small>
                                         </div>
                                          <form action="<?= base_url();?>index.php/alert/update_alert" method="post" enctype="multipart/form-data">  
-                                        <div class="modal-body">
-
-                 
+                                        <div class="modal-body">         
 
                                        <div class="form-group"><input type="hidden" name="alert_id" value="<?php echo $alert_object->alert_id; ?>" class="form-control"></div>
                                        <div class="form-group"><label>Disease: </label> <select name="disease_name"class="form-control">
@@ -129,32 +96,6 @@
                                         <?php endforeach;?>
                                         </select>
                                         </div>
-            
-                        <!--                 <div class="form-group"><label>County: </label>
-                        <select name="county_name" class="form-control" id="countyid" >
-                        //onchange = "javascript:myFunction();"
-
-                                        <option value = "">[Select]</option>
-
-                                        <?php foreach ($county as $county_object): ?>
-                                        <option name="county_name" value="<?php $alert_object->county_id; ?>" <?php if ($alert_object->county_id==$county_object->county_id) {echo "Selected";
-                                                }?> ><?php  echo $county_object->county_name;?>
-                                                </option>
-                                        <?php endforeach;?>
-                                        </select></div> 
-                                       
-                                         <div class="form-group"><label>Sub county: </label>
-                                        <select name="sub_county_name" class="form-control">
-                                        <option value = "">[Select]</option>
-
-                                        <?php foreach ($sub_county as $sub_county_object): ?>
-
-                                        <option name="sub_county_name" <?php if ($alert_object->sub_county_id==$sub_county_object->sub_county_id) {echo "Selected";
-                                                }?> ><?php  echo $sub_county_object->sub_county_name;?>
-                                                </option>
-                                        <?php endforeach;?>
-                                        </select></div> -->
-
 
 
                               <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
@@ -271,14 +212,19 @@
 
                               
 
-                             <div class="form-group">
+                           <!--   <div class="form-group">
                             <label>Date:</label>
                             <input id="textDate" type="text" required name="date" class="form-control"   placeholder="Date">
                             <span class="help-block">yyyy-mm-dd</span>
 
-                            <!--<input type="text"  class="form-control" >-->
-                        </div>
+                                                   </div> -->
 
+                                <div class="form-group" id="data_1">
+                                <label class="font-noraml">Date</label>
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014"  required name="date">
+                                </div>
+                            </div>
 
 
                                         </div>
@@ -292,12 +238,6 @@
                                     </div>
                                 </div>
                             </div>
-       
-     
-
-
-
-   
 
 
 <?php require_once("includes/footer.php"); ?>

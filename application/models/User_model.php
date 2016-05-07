@@ -20,11 +20,10 @@ class User_model extends CI_Model
     }
 
     //create_member
-
-    function new_user($names,$phone_number,$national_id,$password,$email,$role=0, $user_id)
+// new_user($names,$phone_number,$national_id,$password,$email,$user_id, $address, $user_name);
+    function new_user($names,$phone_number,$national_id,$password,$email,$user_id, $address, $user_name)
     {
-
-        $this->db->where('email', $email);
+           $this->db->where('email', $email);
         $query = $this->db->get('user_table');
 
 
@@ -34,17 +33,30 @@ class User_model extends CI_Model
             echo '</strong></div>';
         } else {
 
-            $new_user_insert_data = array(
+        $this->db->where('phone_number', $phone_number);
+        $query = $this->db->get('user_table');
+
+
+        if ($query->num_rows > 0) {
+            echo '<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>';
+            echo "That phone number is registered";
+            echo '</strong></div>';
+        } else {
+
+                 $new_user_insert_data = array(
                 'names' => $names,
                 'phone_number' => $phone_number,
                 'national_id' => $national_id,
                 'password' => md5($password),
                 'email' => $email,
-                'role'=>$role,
-                'user_id'=>$user_id
+                'address'=>$address,
+                'user_id'=>$user_id,
+                'user_name'=>$user_name
             );
             $insert = $this->db->insert('user_table', $new_user_insert_data);
             return $insert;
+        }
+       
         }
     }
 

@@ -35,23 +35,39 @@ class Register extends CI_Controller {
      * @return void
      */
 
+
+    /*userName, password, confirm, names, national_id, email, phone_number, address*/
     public function create_user()
     {
-        $names=$this->input->post('names');
-        $phone_number=$this->input->post('phone_number');
-        $national_id=$this->input->post('national_id');
-        $password=$this->input->post('password');
-        $email=$this->input->post('email');
-        $role=0;
+        $user_name = $this->input->get('userName');
+        $names= $this->input->get('name'); 
+        $phone_number=$this->input->get('phone_number');
+        $national_id=$this->input->get('national_id');
+        $password= md5($this->input->get('password'));
+        $address = $this->input->get('address');
+        $email=$this->input->get('email');
         $user_id = uniqid();
-        $this->load->model('user_model');
 
-        if($this->user_model->new_user($names,$phone_number,$national_id,$password,$email,$role, $user_id))
-        {
-            $data['flash_message']=TRUE;
-            redirect(base_url());
-        
+
+        $this->load->model('user_model');
+        if ($this->user_model->new_user($names,$phone_number,$national_id,$password,$email,$user_id, $address, $user_name)) {
+           /*$message = "successful registration";
+           echo "$message";
+           $this->validate();*/
+           // redirect(base_url());
+            redirect(base_url()."index.php/login");
+
+
+        }else{
+            $data['message'] = "Email already registered";
+          $this->load->view('test2', $data);
+
         }
+
+       
+
+            
+        
     }
 
     function validate()

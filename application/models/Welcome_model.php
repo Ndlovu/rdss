@@ -16,6 +16,22 @@ class Welcome_model extends CI_Model
         
     } 
 
+    public function map_location(){
+        $sql ="SELECT facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id, (SELECT sub_county_name FROM sub_county_table WHERE sub_county_id = sub_id) as location FROM alerts_table";
+        $result= $this->db->query($sql);
+        $alert_location = null;
+        if ($result->num_rows()>0) {
+            foreach ($result->result() as  $value) {
+               $alert_location[] = $value->location;
+              }
+            return ($alert_location);
+                                  
+        }
+        
+    } 
+
+
+
 
 
 

@@ -16,7 +16,6 @@
     </div>
 
 
-
      <div class="wrapper wrapper-content">
        <div class="col-lg-12">
                 <div class="ibox float-e-margins">

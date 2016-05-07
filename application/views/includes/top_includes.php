@@ -8,13 +8,12 @@
 
     <title>RDSS</title>
 
-<!--  <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script> -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/css/plugins/steps/jquery.steps.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/css/animate.css" rel="stylesheet">
+    <link href="<?php echo(base_url()); ?>assets/css/style.css" rel="stylesheet">
 
-    <link href="<?php echo(base_url()); ?>assets/css/plugins/iCheck/custom.css" rel="stylesheet">
-
-    <link href="<?php echo(base_url()); ?>assets/css/plugins/chosen/chosen.css" rel="stylesheet">
 
     <link href="<?php echo(base_url()); ?>assets/css/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
 
@@ -82,15 +81,6 @@
 
     <link href="<?php echo(base_url()); ?>assets/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
 
-    <!-- Data picker -->
-   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
-
-  
-
-    <!-- date-picker -->
-    
-    <link href="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js" rel="stylesheet">
-
     <link  id='GoogleFontsLink' href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
 
 
@@ -103,86 +93,14 @@
     <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/pace/pace.min.js"></script>
     <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Chosen -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/chosen/chosen.jquery.js"></script>
-
-   <!-- JSKnob -->
-   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/jsKnob/jquery.knob.js"></script>
-
-   <!-- Input Mask-->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/jasny/jasny-bootstrap.min.js"></script>
-
    <!-- Data picker -->
    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
-   <!-- NouSlider -->
-   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/nouslider/jquery.nouislider.min.js"></script>
-
-   <!-- Switchery -->
-   <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/switchery/switchery.js"></script>
-
-    <!-- IonRangeSlider -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
-
-    <!-- iCheck -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/iCheck/icheck.min.js"></script>
-
-    <!-- MENU -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
-    <!-- Color picker -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-
-    <!-- Image cropper -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/cropper/cropper.min.js"></script>
-
-
-
-    <!-- Mainly scripts -->
-    <script  type="text/javascript" src="<?php echo(base_url()); ?>assets/js/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <!-- Flot -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.js"></script>
-    <script  type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script  type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.spline.js"></script>
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
-
-    <!-- Peity -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/peity/jquery.peity.min.js"></script>
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/demo/peity-demo.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/inspinia.js"></script>
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/pace/pace.min.js"></script>
-
-    <!-- jQuery UI -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
-
-    <!-- GITTER -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/gritter/jquery.gritter.min.js"></script>
-
-    <!-- Sparkline -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/sparkline/jquery.sparkline.min.js"></script>
-
-    <!-- Sparkline demo data  -->
-    <script type="text/javascript"  src="<?php echo(base_url()); ?>assets/js/demo/sparkline-demo.js"></script>
-
-    <!-- ChartJS-->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/chartJs/Chart.min.js"></script>
-
-    <!-- Toastr -->
-    <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/plugins/toastr/toastr.min.js"></script>
-
-     <script type="text/javascript" src="<?php echo(base_url()); ?>assets/js/reports.js"></script>
-     <!-- <script type="text/javascript" src="assets/template/js/plugins/morris/morris.min.js"></script> -->
 
 
 
 
+  
 
 
 

@@ -36,6 +36,13 @@ class Welcome extends CI_Controller {
 		   echo $some_data;
 		   
 		  }
+
+		  public function location(){
+			$some_data = $this->welcome_model->map_location();
+		    $some_data = json_encode($some_data);
+		   echo $some_data;
+		   
+		  }
 		  public function map_ussd_locations(){
 
 		  	$data = $this->welcome_model->show_ussd_disease_report();

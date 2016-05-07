@@ -1,5 +1,4 @@
 <?php 
-
 class Ussd extends CI_Controller
 {
   public function index(){
@@ -13,6 +12,7 @@ class Ussd extends CI_Controller
 
   //check the registration status of the user
   $user_status = $this->session_model->check_user_status($phoneNumber);
+
   if ($user_status == false) {
   //if the user has not registered execute this block of code
     $session_is_present = $this->session_model->check_if_session_exists($sessionId, $phoneNumber);
@@ -21,9 +21,8 @@ class Ussd extends CI_Controller
       $this->session_model->new_session($sessionId, $phoneNumber, $key);
       $response = "CON Register to continue using the system:";
       $response .= "Enter full names, national ID, email";
-      $response .= "Format: Derrick Oloo, 12893465, derrickOloo@gmail.com";
+      $response .= "Format: Derrick Oloo, 12345678, derrickOloo@gmail.com";
       }elseif($session_is_present == 1){
-
         $temp_variable = $text;
         $temp_variable = explode(",", $temp_variable);
         $full_name = $temp_variable[0];
@@ -40,10 +39,12 @@ class Ussd extends CI_Controller
     if ($session_is_present == false) {
        $this->session_model->new_session($sessionId, $phoneNumber, $key);
 
-       $response = "CON Select option: \n 1. Single incident \n 2. Multiple incidents";
+       $response = "CON Welcome $user_status\n"; 
+       $response .= "Select option: \n 1. Report single incident \n 2. Report multiple incidents";
   
     }elseif ($session_is_present == 1) {
       $temp_variable = $text;
+      $temp_variable =trim($temp_variable);
       if ($temp_variable == 1) {
         $step = 2;
         $this->session_model->set_step($sessionId, $step);
@@ -84,9 +85,6 @@ class Ussd extends CI_Controller
         }
       }
 
-     /* $this->session_model->save_incident_report($phoneNumber, $mfl_code, $disease_code, $age, $sex, $status, $date);
-      $response = "END incident report successfully saved. \n."; */
-
     }elseif ($session_is_present == 3) {
       
       $temp = $text;
@@ -115,9 +113,6 @@ class Ussd extends CI_Controller
 
         }
       }
-    /*$this->session_model->save_weekly_report($sessionId, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date);
-      $response = "END  Multiple incident report successfully saved\n.";*/
-
     }
     else{
       $response = "END Technical error. Please try again";
