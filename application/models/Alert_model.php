@@ -31,6 +31,15 @@ class Alert_model extends CI_Model
                 return($result->result());
 
         }
+
+
+           /*This function adds a commodity to the database*/
+    function add_weekly_report($report = NULL)
+    {
+        $this->db->insert('weekly_ussd_reports', $report);
+        return $this->db->insert_id();
+    }
+
         
 
   

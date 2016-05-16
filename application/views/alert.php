@@ -173,7 +173,7 @@
                                                     </select></div>
 
 
-                                <div class="form-group"><label>County: </label><select class="form-control m-b" name="county_name">
+                          <!--       <div class="form-group"><label>County: </label><select class="form-control m-b" name="county_name">
                                  <option value = "">[Select]</option>
                                 <?php foreach ($county as $county_object): ?>  
                                   <option  value="<?php echo $county_object->county_name;?>" ><?php echo $county_object->county_name;?></option><?php endforeach; ?>
@@ -185,7 +185,7 @@
                              <option value = "">[Select]</option>
                                 <?php foreach ($sub_county as $sub_county_object): ?>  
                                   <option  value="<?php echo $sub_county_object->sub_county_name;?>" ><?php echo $sub_county_object->sub_county_name;?></option><?php endforeach; ?>
-                                        </select></div>
+                                        </select></div> -->
 
 
 

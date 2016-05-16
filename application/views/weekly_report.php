@@ -116,7 +116,7 @@
                                         </select>
                                         </div>
 
-            
+            <!-- 
                                         <div class="form-group"><label>County: </label>
                         <select name="county_name" class="form-control" id="countyid" >
                         //onchange = "javascript:myFunction();"
@@ -141,7 +141,7 @@
                                                 </option>
                                         <?php endforeach;?>
                                         </select></div>
-
+ -->
 
 
                               <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
@@ -216,7 +216,7 @@
                                             <h4 class="modal-title">alert</h4>
                                             <small class="font-bold">add an alert here.</small>
                                         </div>
-                                        <form action="<?= base_url();?>index.php/alert/save_alert" method="post" enctype="multipart/form-data">  
+                                        <form action="<?= base_url();?>index.php/alert/save_weekly_report" method="post" enctype="multipart/form-data">  
                                         <div class="modal-body">
 
                              <div class="form-group"><label>Disease: </label><select class="form-control m-b" name="disease_name"  >
@@ -226,7 +226,7 @@
                                                     </select></div>
 
 
-                                <div class="form-group"><label>County: </label><select class="form-control m-b" name="county_name">
+                          <!--       <div class="form-group"><label>County: </label><select class="form-control m-b" name="county_name">
                                  <option value = "">[Select]</option>
                                 <?php foreach ($county as $county_object): ?>  
                                   <option  value="<?php echo $county_object->county_name;?>" ><?php echo $county_object->county_name;?></option><?php endforeach; ?>
@@ -238,7 +238,7 @@
                              <option value = "">[Select]</option>
                                 <?php foreach ($sub_county as $sub_county_object): ?>  
                                   <option  value="<?php echo $sub_county_object->sub_county_name;?>" ><?php echo $sub_county_object->sub_county_name;?></option><?php endforeach; ?>
-                                        </select></div>
+                                        </select></div> -->
 
 
 

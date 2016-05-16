@@ -159,21 +159,21 @@ function update_alert() {
         $disease_id=$this->disease_model->get_disease_id_given_name($disease_name);
       
         $user_id= $this->session->userdata('user_id');
-        $weekly_cases = $this->input->post('weekly_cases');
+        $weekly_cases = $this->input->post('number_of_cases');
         $number_of_deaths = $this->input->post('number_of_deaths');
         $start_date = $this->input->post('start_date');
          $end_date = $this->input->post('end_date');
 
                
-        $alert = array(
-            
+        $alert = array(            
             'facility_id'=>$facility_id,
             'disease_id'=>$disease_id,
             'user_id'=>$user_id,
-             'alert_id'=>uniqid(),
-             'facility_id'=>$facility_id,
-             'start_date'=>$start_date,
-             'end_date'=>$end_date
+            'number_of_deaths'=>$number_of_deaths,
+            'number_of_incidents'=>$weekly_cases,
+             'report_id'=>uniqid(),
+             'date_from'=>$start_date,
+             'date_to'=>$end_date
             
             
         );
