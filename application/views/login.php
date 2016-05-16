@@ -38,6 +38,9 @@
                     <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
                 </p>
  -->
+ <!--      <span><img alt="image" class="img image" src="<?php echo(base_url()); ?>assets/img/icon.jpeg" />
+                </span> -->
+
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">

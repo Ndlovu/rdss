@@ -88,6 +88,10 @@ class Welcome_model extends CI_Model
          
     }
 
+    public function alerts_by_date($date){
+      $sql = "SELECT disease_id as did, age, sex, status, user_id as id_user, report_date,facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id,(SELECT sub_county_name FROM sub_county_table WHERE sub_county_id = sub_id) as sub_county_name,(SELECT facility_name FROM facility_table WHERE facility_id = fid) as f_name, (SELECT disease_name FROM disease_table WHERE disease_id = did) as disease_name FROM alerts_table";       
+    }
+
 
 
 }

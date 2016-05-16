@@ -5,25 +5,15 @@ class Test extends CI_Controller
     {
         parent::__construct();
 
-		   $this->load->model('session_model');
+		   $this->load->model('alert_model');
 		  
    }
 
  	public function index(){
- 		// $phoneNumber = "0724441238";
- 		// $session_id = "2345gc56789jb";
- 		//  $user_status = $this->session_model->check_if_session_exists($session_id, $phoneNumber);
- 		//  echo($user_status);
- 		$this->load->view('test2');
- 	}
+ 		$data =  $this->alert_model->show_weekly_reports();
+ 		print_r($data);
+ 		
+}
 
- 	public function errors(){
- 		$this->load->view('404');
- 	}
 }
 ?>
-<!-- check_mfl_code($mfl_code){
- check_disease($disease_code){ -->
-
-
-

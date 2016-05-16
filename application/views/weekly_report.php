@@ -35,15 +35,16 @@
             <h2>weekly report</h2>
 
         </div>
-         <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
+
         <div class="col-sm-8">
             <div class="title-action">
+             <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
                 <a href="#"  data-toggle="modal" data-target="#add_alert" class="btn btn-primary">Add an alert</a>
 
-
+                <?php } ?>
             </div>
         </div>
-        <?php}?>
+    
     </div>
     <div class="wrapper wrapper-content">
        <div class="col-lg-12">
@@ -87,8 +88,7 @@
                                       <td><?php echo $weekly_report->number_of_incidents;?></td>
                                        <td><?php  echo $weekly_report->number_of_deaths;?></td>
                                        <td><?php  echo $weekly_report->date_from;?></td>
-                                       <td><?php  echo $weekly_report->date_to;?></td>
-                                       <td data-toggle="modal" data-target="#myModal_<?php echo $weekly_report->report_id; ?>"><i class="fa fa-wrench"></i>
+                                       <td><?php  echo $weekly_report->date_to;?></td>  <td data-toggle="modal" data-target="#myModal_<?php echo $weekly_report->report_id; ?>"><i class="fa fa-wrench"></i>
     
 
     <div class="modal inmodal"  id="myModal_<?php echo $weekly_report->report_id; ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -166,9 +166,9 @@
              <div class="form-group" id="data_5">
                 <label class="font-noraml">select week</label>
                 <div class="input-daterange input-group" id="datepicker">
-                    <input type="text" class="input-sm form-control" name="start_date" value="05/14/2014"/>
+                    <input type="text" class="input-sm form-control" name="start_date" value="<?php echo $weekly_report->date_from; ?>"/>
                     <span class="input-group-addon">to</span>
-                    <input type="text" class="input-sm form-control" name="end_date" value="05/22/2014" />
+                    <input type="text" class="input-sm form-control" name="end_date" value="<?php echo $weekly_report->date_to; ?>" />
                 </div>
             </div>
 
@@ -184,6 +184,7 @@
                                 </div>
                             </div>
                             </td> 
+                                     
                               
 
                             </tr>
@@ -201,6 +202,11 @@
 
     </div>
 </div>
+
+
+
+
+                            
 <div class="modal inmodal" id="add_alert" tabindex="-1" role="dialog" aria-hidden="true">
                                <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
@@ -279,12 +285,6 @@
                                     </div>
                                 </div>
                             </div>
-       
-     
-
-
-
-   
 
 
 <?php require_once("includes/footer.php"); ?>

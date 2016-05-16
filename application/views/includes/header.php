@@ -8,6 +8,9 @@
                     <li class="nav-header">    
 
                 <div class="dropdown profile-element"> <!-- <span>RDSS</span> -->
+                <span><img alt="image" class="img image" src="<?php echo(base_url()); ?>assets/img/moh.jpg" />
+                </span>
+
                   <?php if($this->session->userdata('role')!="" || $this->session->userdata('role')!=""){ ?>
                     <a> <span class="clear"> <span class="block m-t-xs" style="font-size:14px"><!-- Logged in as: --> <i class="fa fa-user"></i><strong class="font-bold"> <?php echo($this->session->userdata('names'));?></strong></span>  </span></a>
                   <?php } else { ?>

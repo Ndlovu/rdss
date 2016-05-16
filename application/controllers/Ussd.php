@@ -19,10 +19,11 @@ class Ussd extends CI_Controller
     if ($session_is_present == false) {
       //if there is no session, create new session and guide user through the registration process
       $this->session_model->new_session($sessionId, $phoneNumber, $key);
-      $response = "CON Register to continue using the system:";
-      $response .= "Enter full names, national ID, email";
-      $response .= "Format: Derrick Oloo, 12345678, derrickOloo@gmail.com";
+
+      $response = "CON Register to continue using the system: \n Enter full names, national ID, email \n Format: Derrick Oloo, 12345678, derrickOloo@gmail.com";
+      
       }elseif($session_is_present == 1){
+
         $temp_variable = $text;
         $temp_variable = explode(",", $temp_variable);
         $full_name = $temp_variable[0];
@@ -53,7 +54,7 @@ class Ussd extends CI_Controller
       }elseif ($temp_variable == 2) {
         $step = 3;
           $this->session_model->set_step($sessionId, $step);
-          $response = "CON Weekly report\n Enter facility code, disease code, reported cases, deaths, start date, end date \n Format: 21456, CHL, 30, 0, 20150305, 20150410";
+          $response = "CON Weekly report\n Enter facility code, disease code, reported cases, deaths, start date, end date \n Format: 21456, CHL, 30, 0, 20150305, 20150410\n";
       }else{
         $response = "END Incorrect input. Try again";
       }
@@ -120,6 +121,8 @@ class Ussd extends CI_Controller
 
 
   }
+  // Print the response onto the page so that our gateway can read it 
+  header('Content‐type: text/plain'); 
     echo $response;
     } 
   }

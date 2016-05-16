@@ -25,7 +25,6 @@ $val = null;
 if ($result->num_rows() > 0) {
 $variable=$result->result();
 foreach ($variable as $value) {
-
 $val = $value->input_step;
 }
 return $val;
@@ -36,7 +35,6 @@ return false;
 
 }
 
-
 public function new_session($session_id, $phone_number, $key)
 {
 $data = array(
@@ -46,12 +44,13 @@ $data = array(
 );
 $this->db->insert('session', $data);
 }
-
-public function save_extra_information($full_name, $id_number, $email_address, $phone_number){
-$data = array(  'full_name'=>$full_name,
-        'id_number'=>$id_number,
-        'email_address'=>$email_address,
-        'phone_number'=>$phone_number);
+// ave_extra_information($full_name, $id_number, $email_address, $phoneNumber);
+public function save_extra_information($full_name, $id_number, $email_address, $phoneNumber){
+$data = array(
+	'names'=>$full_name,
+	'id_number'=>$id_number,
+	'email_address'=>$email_address,
+	'phone_number'=>$phoneNumber);
 
 $this->db->insert('user_table', $data);
 
@@ -94,15 +93,19 @@ return false;
 public function save_incident_report($phone_number, $mfl_code, $disease_code, $age, $sex, $status, $date, $record_id){
 
 $user_id = $this->getUserid($phone_number);
+
+$disease_id = $this->get_disease_id($disease_code);
+$facility_id = $this->get_facility_id($mfl_code);
+
 $data = array(
 'alert_id'=>$record_id,
 'user_id' => $user_id,
-'mfl_code' => $mfl_code,
-'disease_code' => $disease_code,
+'facility_id' => $facility_id,
+'disease_id' => $disease_id,
 'age'=> $age,
 'sex' => $sex,
 'status' => $status,
-'date'=>$date);
+'report_date'=>$date);
 
 $this->db->insert('alert_tables', $data);
 }
@@ -111,18 +114,17 @@ function save_weekly_report($phoneNumber, $mfl_code, $disease_code, $number_of_i
 
 $user_id = $this->getUserid($phoneNumber);
 $disease_id = $this->get_disease_id($disease_code);
-$facility_id = $this->get_facility_id();
+$facility_id = $this->get_facility_id($mfl_code);
 
-
-$data =array('mfl_code' => $mfl_code,
-'disease_code'=>$disease_code,
+$data =array('facility_id' => $facility_id,
+'disease_id'=>$disease_id,
 'number_of_incidents'=>$number_of_incidents,
 'number_of_deaths'=>$deaths,
 'date_from' =>$start_date,
 'date_to'=>$end_date,
 'user_id'=>$user_id,
-'record_id' => $record_id);
-$this->db->update('weekly_ussd_reports', $data);
+'report_id' => $record_id);
+$this->db->insert('weekly_ussd_reports', $data);
 
 }
 

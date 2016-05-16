@@ -116,6 +116,10 @@ class Welcome extends CI_Controller {
 
 		}
 
+		public function view_report_by_disease(){
+			
+		}
+
 
 
 }

@@ -1,119 +1,128 @@
 <?php 
-public function index()
-    {
-        // Reads the variables sent via POST from our gateway 
-        $sessionId   = $_POST["sessionId"]; 
-        $serviceCode = $_POST["serviceCode"]; 
-        $phoneNumber = $_POST["phoneNumber"]; 
-        $text        = $_POST["text"]; 
+class Ussd extends CI_Controller
+{
+  public function index(){
+  $sessionId = $this->input->post('sessionId');
+  $phoneNumber = $this->input->post('phoneNumber');
+  $text = $this->input->post('text');
+  $key = uniqid();
 
-      $session_is_present = $this->session_model->check_if_session_exists($session_id, $phone_number);
-       if ( $session_is_present ==false) { 
-        $new_session = $this->session_model->new_session($sessionId, $phoneNumber);
-         $response  = "CON What would you want to do \n"; 
-         $response .= "1. Register \n";
-         $response .= "2. Report incident";
-        } elseif ($session_is_present = 1) {
-          $temp =$text;
-          if ( $temp ==1) { 
-              $input_step = 2;
-              $this->session_model->set_input_step($sessionId, $input_step);
-              $response = "CON Register to rdss. Please use the format: full names, ID number, email.\n";
-              $response .="Format:george oliech,2121212 georgeoliech@gmail.com";
-                 
-             } 
-             else if($temp == 2) { 
-              $response ="CON Type of report to be submitted:";
-              $response .="1. Single incident report";
-              $response .= "2. Weekly report";
-              }
-              else if ( $temp ="2*1" ) { 
-               $input_step = 3;
-               $this->session_model->set_input_step($sessionId, $input_step);                        
-            $response = "CON Welcome. \n Report disease incident\n ";
-            $response .= "MFL_CODE,DISEASE_CODE,AGE,GENDER,STATUS";
-            $response .= "Format: PGH,CL,10,F,Alive";
+  //load the model to be used to store and retrieve data to and from a database
+  $this->load->model('session_model');
 
+  //check the registration status of the user
+  $user_status = $this->session_model->check_user_status($phoneNumber);
 
-            }elseif ($temp = "2*2") {
-              $input_step = 4;
-               $this->session_model->set_input_step($sessionId, $input_step);  
-                $response = "CON Weekly report\n";
-                $response .= "Enter facility mfl code, disease, number of incidents, deaths, date\n ";
-                $response .= "Format: 21456, CHL, 30, 0, 20150305";          
-            } 
+  if ($user_status == false) {
+  //if the user has not registered execute this block of code
+    $session_is_present = $this->session_model->check_if_session_exists($sessionId, $phoneNumber);
+    if ($session_is_present == false) {
+      //if there is no session, create new session and guide user through the registration process
+      $this->session_model->new_session($sessionId, $phoneNumber, $key);
+      $response = "CON Register to continue using the system: \n 
+      Enter full names, national ID, email \n 
+      Format: Derrick Oloo, 12345678, derrickOloo@gmail.com";
+      
+      }elseif($session_is_present == 1){
 
-        
-          
-        }                 
-        else if($session_is_present == 2) {
-                $temp = $text;
-          
-                $temp = explode(',', $temp);//remove commas from the sting to identify each user input
-                $full_name = $temp[0];
-                $id_number = $temp[1];
-                $email_address =$temp[2]; 
-              
-             $this->session_model->save_extra_information($sessionId, $full_name, $id_number, $email_address);
-             $response ="END Thank you for registering.";
-          
-          } 
-        elseif ($session_is_present ==3) {
-            $temp = $text;
-            $temp = explode('*', $temp);
-            $temp = $temp[1];
-            $temp = explode(',', $temp);
-            $mfl_code = $temp[0];
-            $disease_code = $temp[1];
-            $age = $temp[2];
-            $sex = $temp[3];
-            $status = $temp[4];
+        $temp_variable = $text;
+        $temp_variable = explode(",", $temp_variable);
+        $full_name = $temp_variable[0];
+        $id_number = $temp_variable[1];
+        $email_address = $temp_variable[2];
+        $this->session_model->save_extra_information($full_name, $id_number, $email_address, $phoneNumber);
+        $response = "END Thank you for registering. $full_name";
+    }else{
+      $response = "END Sorry. an error has occured. please try again";
+    }
 
-            if ($this->session_model->check_mfl_code($mfl_code)==1) {
-                  if ($this->session_model->check_disease($disease_code)==1) {
-                  $this->session_model->save_incident_report($sessionId, $mfl_code, $disease_code, $age, $sex, $status);
-                  $response = "END incident report successfully saved. \n.";   
-                  $response .= "Thank You for using RDSS";                     
-                  }else{
-                    $response = "END Enter a valid disease.\n";
-                $response .= "System tracks cholera, Meningitis, Yellow Fever etc.";
-                  }                  
-              }else{
-              $response = "END Please enter a valid mfl code.";
-              }
+  }else{
+       $session_is_present = $this->session_model->check_if_session_exists($sessionId, $phoneNumber);
+    if ($session_is_present == false) {
+       $this->session_model->new_session($sessionId, $phoneNumber, $key);
+
+       $response = "CON Welcome $user_status\n"; 
+       $response .= "Select option: \n 1. Report single incident \n 2. Report multiple incidents";
+  
+    }elseif ($session_is_present == 1) {
+      $temp_variable = $text;
+      $temp_variable =trim($temp_variable);
+      if ($temp_variable == 1) {
+        $step = 2;
+        $this->session_model->set_step($sessionId, $step);
+        $response = "CON Report incident. \n Enter mfl code, disease code, age, sex, status, date \n Format: PGH,CL,10,F,Alive \n";
+
+      }elseif ($temp_variable == 2) {
+        $step = 3;
+          $this->session_model->set_step($sessionId, $step);
+          $response = "CON Weekly report\n Enter facility code, disease code, reported cases, deaths, start date, end date \n Format: 21456, CHL, 30, 0, 20150305, 20150410\n";
+      }else{
+        $response = "END Incorrect input. Try again";
+      }
+
+    }elseif ($session_is_present == 2) {
+    $temp = $text;
+      $temp = explode('*', $temp);
+      $temp = $temp[1];
+      $temp = explode(',', $temp);
+      $mfl_code = $temp[0];
+      $disease_code = $temp[1];
+      $age = $temp[2];
+      $sex = $temp[3];
+      $status = $temp[4];
+      $date = $temp[5];
+      $record_id = uniqid();
+      $is_disease_valid = $this->session_model->check_disease($disease_code);
+      if ($is_disease_valid == false) {
+        $response = "END Incorrect disease code. Please try again.";
+      }else{
+        $is_facility_valid = $this->session_model->check_mfl_code($mfl_code);
+        if ($is_facility_valid == false) {
+          $response = "END Incorrect facility code. Please try again";
+        }else{
+
+          $this->session_model->save_incident_report($phoneNumber, $mfl_code, $disease_code, $age, $sex, $status, $date, $record_id);
+          $response = "END $is_disease_valid incident report for $is_facility_valid successfully saved. \n.";
 
         }
-        elseif ($session_is_present == 4) {
-          $temp = $text;
-          $temp = explode('*', $temp);
-          $temp = $temp[1];
-          $temp = explode(',', $temp);
-          $mfl_code = $temp[0];
-          $disease_code = $temp[1];
-          $number_of_incidents = $temp[2];
-          $deaths = $temp[3];
-          $date = $temp[4];
-          if ($this->session_model->check_mfl_code($mfl_code)==1) {
-            if ($this->session_model->check_disease($disease_code)==1) {
-              $this->session_model->save_weekly_report($sessionId,$mfl_code, $disease_code, $number_of_incidents, $deaths, $date);
-              $response = "END  Weekly report successfully saved\n.";    
-              $response .= "Thank You for using RDSS";                   
-              }else{
-                $response = "END Enter a valid disease.\n";
-                $response .= "System tracks cholera, Meningitis, Yellow Fever etc.";
-                }                  
-                }else{
-                  $response = "END Please enter a valid mfl code.\n";
-             }
+      }
+
+    }elseif ($session_is_present == 3) {
+      
+      $temp = $text;
+      $temp = explode('*', $temp);
+      $temp = $temp[1];
+      $temp = explode(',', $temp);
+      $mfl_code = $temp[0];
+      $disease_code = $temp[1];
+      $number_of_incidents = $temp[2];
+      $deaths = $temp[3];
+      $start_date = $temp[4];
+      $end_date = $temp[5];
+      $record_id = uniqid();
+      
+            $is_disease_valid = $this->session_model->check_disease($disease_code);
+      if ($is_disease_valid == false) {
+        $response = "END Incorrect disease code. Please try again.";
+      }else{
+        $is_facility_valid = $this->session_model->check_mfl_code($mfl_code);
+        if ($is_facility_valid == false) {
+          $response = "END Incorrect facility code. Please try again";
+        }else{
+
+  $this->session_model->save_weekly_report($phoneNumber, $mfl_code, $disease_code, $number_of_incidents, $deaths, $start_date, $end_date, $record_id);
+          $response = "END $is_disease_valid mulitple incident report for $is_facility_valid successfully saved. \n.";
+
         }
+      }
+    }
+    else{
+      $response = "END Technical error. Please try again";
+    }
 
 
-
-
-
-        echo $response; 
-        // DONE!!! 
-            }
-
-
-            ?>
+  }
+    echo $response;
+    } 
+  }
+?>
