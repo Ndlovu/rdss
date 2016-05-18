@@ -45,15 +45,8 @@ $data = array(
 $this->db->insert('session', $data);
 }
 // ave_extra_information($full_name, $id_number, $email_address, $phoneNumber);
-public function save_extra_information($full_name, $id_number, $email_address, $phoneNumber){
-$data = array(
-	'names'=>$full_name,
-	'id_number'=>$id_number,
-	'email_address'=>$email_address,
-	'phone_number'=>$phoneNumber);
-
+public function save_extra_information($data){
 $this->db->insert('user_table', $data);
-
 }
 
 function set_step($session_id,$step){

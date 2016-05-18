@@ -16,8 +16,15 @@ class Disease_model extends CI_Model
         $this->db->from('disease_table');
         $this->db->where('disease_name', $disease_name);
         $query = $this->db->get();
+        if ($query->num_rows()>0) {
         $result = $query->row()->disease_id;
         return $result;
+        
+         }else{
+            return null;
+        }
+     
+
     }
 
 

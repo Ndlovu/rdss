@@ -17,9 +17,20 @@ class Register extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+
+    function __construct()
+    {
+        parent::__construct();
+
+           $this->load->model('facility_model');
+            $this->load->model('user_model');
+  
+   }
+
 	public function index()
 	{
-		$this->load->view('register');
+        $data['facilities'] = $this->facility_model->show_facilities();
+		$this->load->view('register', $data);
 	}
 
 
@@ -44,17 +55,19 @@ class Register extends CI_Controller {
         $phone_number=$this->input->get('phone_number');
         $national_id=$this->input->get('national_id');
         $password= md5($this->input->get('password'));
-        $address = $this->input->get('address');
+        // $address = $this->input->get('address');
         $email=$this->input->get('email');
+        $facility_name = $this->input->get("facility_name");
+        $facility_id = $this->facility_model->get_facility_id_given_name($facility_name);
         $user_id = uniqid();
 
 
-        $this->load->model('user_model');
-        if ($this->user_model->new_user($names,$phone_number,$national_id,$password,$email,$user_id, $address, $user_name)) {
-           /*$message = "successful registration";
+       
+        if ($this->user_model->new_user($names,$phone_number,$national_id,$password,$email,$user_id, $user_name, $facility_id)) {
+  /*         $message = "successful registration";
            echo "$message";
-           $this->validate();*/
-           // redirect(base_url());
+           $this->validate();
+*/           // redirect(base_url());
             redirect(base_url()."index.php/login");
 
 
@@ -63,8 +76,6 @@ class Register extends CI_Controller {
           $this->load->view('test2', $data);
 
         }
-
-       
 
             
         
@@ -82,6 +93,7 @@ class Register extends CI_Controller {
             $role=$is_valid[0]['role'];
             $user_id=$is_valid[0]['user_id'];
             $names=$is_valid[0]['name'];
+            $facility_id = $is_valid[0]['facility_id'];
            
             $data = array(
                 'user_name' => $user_name,

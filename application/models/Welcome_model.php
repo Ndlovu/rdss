@@ -30,13 +30,6 @@ class Welcome_model extends CI_Model
         
     } 
 
-
-
-
-
-
-
-
     public function show_ussd_disease_report(){
         $sql ="SELECT record_id, age, sex, status, time_stamp, disease_code as did, mfl_code as mfl, (SELECT disease_name FROM disease_table WHERE disease_acronym = did) as disease_name, (SELECT facility_name FROM facility_table WHERE mfl_code = mfl) as facility_name FROM sessions";
         $result= $this->db->query($sql);
@@ -88,11 +81,26 @@ class Welcome_model extends CI_Model
          
     }
 
-    public function alerts_by_date($date){
-      $sql = "SELECT disease_id as did, age, sex, status, user_id as id_user, report_date,facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id,(SELECT sub_county_name FROM sub_county_table WHERE sub_county_id = sub_id) as sub_county_name,(SELECT facility_name FROM facility_table WHERE facility_id = fid) as f_name, (SELECT disease_name FROM disease_table WHERE disease_id = did) as disease_name FROM alerts_table";       
+    public function alerts_by_disease($disease_id){
+      $sql = "SELECT disease_id as did, age, sex, status, user_id as id_user, report_date,facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id,(SELECT sub_county_name FROM sub_county_table WHERE sub_county_id = sub_id) as sub_county_name,(SELECT facility_name FROM facility_table WHERE facility_id = fid) as f_name, (SELECT disease_name FROM disease_table WHERE disease_id = did) as disease_name FROM alerts_table WHERE disease_id = '{$disease_id}'";
+          $result = $this->db->query($sql);
+         if ($result->num_rows()>0) {
+             $result = $result->result();
+             return $result;
+         }else{return null;}
+
     }
 
 
+    public function get_facilty_alerts($facility_id){
+      $sql = "SELECT disease_id as did, age, sex, status, user_id as id_user, report_date,facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id,(SELECT sub_county_name FROM sub_county_table WHERE sub_county_id = sub_id) as sub_county_name,(SELECT facility_name FROM facility_table WHERE facility_id = fid) as f_name, (SELECT disease_name FROM disease_table WHERE disease_id = did) as disease_name FROM alerts_table WHERE facility_id = '{$facility_id}'";
+      $result = $this->db->query($sql);
+         if ($result->num_rows()>0) {
+             $result = $result->result();
+             return $result;
+         }else{return null;}
+         
+    }
 
 }
 ?>

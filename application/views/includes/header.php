@@ -60,6 +60,8 @@
                         <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_by_county">view by county</a></li>
                      <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_sub_county">view by sub county</a></li>
                      <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/report_per_user">view by user</a></li>
+
+                        <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/welcome/view_report_by_disease">view by disease</a></li>
                      <li><a class="nav-label" style="font-size:15px"href="<?php echo(base_url()); ?>index.php/alert/weekly_report"><!-- <i class="fa fa-list"> --></i>Weekly reports</a></li>
                         </ul></li>
 

@@ -5,13 +5,15 @@ class Test extends CI_Controller
     {
         parent::__construct();
 
-		   $this->load->model('alert_model');
+		   $this->load->model('facility_model');
 		  
    }
 
  	public function index(){
- 		$data =  $this->alert_model->show_weekly_reports();
- 		print_r($data);
+ 	$this->load->view('county_coordinator');
+ 	
+
+
  		
 }
 

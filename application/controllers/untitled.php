@@ -19,9 +19,8 @@ class Ussd extends CI_Controller
     if ($session_is_present == false) {
       //if there is no session, create new session and guide user through the registration process
       $this->session_model->new_session($sessionId, $phoneNumber, $key);
-      $response = "CON Register to continue using the system: \n 
-      Enter full names, national ID, email \n 
-      Format: Derrick Oloo, 12345678, derrickOloo@gmail.com";
+
+      $response = "CON Register to continue using the system: \n Enter full names, national ID, email \n Format: Derrick Oloo, 12345678, derrickOloo@gmail.com";
       
       }elseif($session_is_present == 1){
 
@@ -122,6 +121,8 @@ class Ussd extends CI_Controller
 
 
   }
+  // Print the response onto the page so that our gateway can read it 
+  header('Content‐type: text/plain'); 
     echo $response;
     } 
   }

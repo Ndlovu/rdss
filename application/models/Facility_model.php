@@ -23,8 +23,14 @@ class Facility_model extends CI_Model
         $this->db->from('facility_table');
         $this->db->where('facility_name', $facility_name);
         $query = $this->db->get();
-        $result = $query->row()->facility_id;
+        // $result = $query->row()->facility_id;
+        // return $result;
+        if ($query->num_rows()>0) {
+             $result = $query->row()->facility_id;
         return $result;
+        }else{
+            return null;
+        }
     }
         
     //This function updates the contents of the data held in the facility table
@@ -52,6 +58,40 @@ class Facility_model extends CI_Model
         return $result;
         //var_dump($result);
     }
+
+
+        function get_facility_id_given_code($mfl_code)
+    {
+        $this->db->select('facility_id');
+        $this->db->from('facility_table');
+        $this->db->where('mfl_code', $mfl_code);
+        $query = $this->db->get();
+        // $result = $query->row()->facility_id;
+        // return $result;
+        if ($query->num_rows()>0) {
+             $result = $query->row()->facility_id;
+        return $result;
+        }else{
+            return null;
+        }
+    }
+
+     function get_facility_name_given_code($mfl_code)
+    {
+        $this->db->select('facility_name');
+        $this->db->from('facility_table');
+        $this->db->where('mfl_code', $mfl_code);
+        $query = $this->db->get();
+        // $result = $query->row()->facility_id;
+        // return $result;
+        if ($query->num_rows()>0) {
+             $result = $query->row()->facility_name;
+        return $result;
+        }else{
+            return null;
+        }
+    }
+
 
 
 

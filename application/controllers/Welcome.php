@@ -21,6 +21,7 @@ class Welcome extends CI_Controller {
 		   $this->load->model('user_model');
 		   $this->load->model('sub_county_model');
 		   $this->load->model('message_model');
+		   $this->load->model('disease_model');
    }
 
 		public function index()
@@ -117,7 +118,20 @@ class Welcome extends CI_Controller {
 		}
 
 		public function view_report_by_disease(){
-			
+			$disease_name=$this->input->post('disease_name');
+			$disease_id = $this->disease_model->get_disease_id_given_name($disease_name);
+
+			$data['filter_by_disease'] = $this->welcome_model->alerts_by_disease($disease_id);
+			$data['diseases'] = $this->disease_model->show_diseases();
+			$this->load->view("report_per_disease", $data);
+
+		}
+
+
+		public function facility_coordinator(){
+			$facility_id = $this->session->userdata("facility_id");
+			$data["facility_alerts"]= $this->welcome_model->get_facilty_alerts($facility_id);
+			$this->load->view("facility_coordinator", $data);
 		}
 
 

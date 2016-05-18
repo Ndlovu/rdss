@@ -21,7 +21,7 @@ class User_model extends CI_Model
 
     //create_member
 // new_user($names,$phone_number,$national_id,$password,$email,$user_id, $address, $user_name);
-    function new_user($names,$phone_number,$national_id,$password,$email,$user_id, $address, $user_name)
+    function new_user($names,$phone_number,$national_id,$password,$email,$user_id, $user_name, $facility_id)
     {
            $this->db->where('email', $email);
         $query = $this->db->get('user_table');
@@ -49,9 +49,10 @@ class User_model extends CI_Model
                 'national_id' => $national_id,
                 'password' => md5($password),
                 'email' => $email,
-                'address'=>$address,
+                // 'address'=>$address,
                 'user_id'=>$user_id,
-                'user_name'=>$user_name
+                'user_name'=>$user_name,
+                'facility_id'=>$facility_id
             );
             $insert = $this->db->insert('user_table', $new_user_insert_data);
             return $insert;

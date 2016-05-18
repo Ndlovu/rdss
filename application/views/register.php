@@ -117,10 +117,16 @@
                                             </div>
                                         
                                              <div class="col-lg-6">
-                                                   <div class="form-group">
+                                                   <!-- <div class="form-group">
                                                 <label>Facility *</label>
                                                 <input id="address" name="address" type="text" class="form-control">
-                                            </div>
+                                            </div> -->
+                                             <div class="form-group"><label>Facility: </label><select class="form-control m-b" name="facility_name">
+                             <option value = "">[Select]</option>
+                    <?php foreach ($facilities as $facility_object): ?>  
+                      <option  value="<?php echo $facility_object->facility_name;?>" ><?php echo $facility_object->facility_name;?></option><?php endforeach; ?>
+                            </select></div>
+
 
                                              </div>
                                         </div>
