@@ -74,15 +74,15 @@
                                             <div class="form-group">
                                                 <input name="email" type="email" class="form-control" placeholder="Email" value="<?php echo($user->email); ?>" required="">
                                             </div>
-                                            <input type="hidden" name="role" value="<?php echo($user->user_id); ?>" >
+                                            <input type="hidden" name="user_id" value="<?php echo($user->user_id); ?>" >
                                             <div class="form-group">
-                                                <input name="role" type="text"  value="<?php echo($user->role); ?>"class="form-control" placeholder="Role" >
+                                                <input name="role" type="text"  value="<?php echo($user->role); ?>" required >
                                             </div>
                                             <div class="form-group">
-                                                <input name="national_id" type="number" class="form-control" value="<?php echo($user->national_id); ?>" placeholder="National ID number" required>
+                                                <input name="national_id" type="number" class="form-control" value="<?php echo($user->national_id); ?>"  required>
                                             </div>
                                             <div class="form-group">
-                                                <input name="phone_number" type="tel" class="form-control" placeholder="Phone Number" value="<?php echo($user->phone_number); ?>" required="">
+                                                <input name="phone_number" type="tel" class="form-control" placeholder="Phone Number" value="<?php echo($user->phone_number); ?>" required>
                                             </div>
                                             <!--<div class="form-group">
                                                     <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>

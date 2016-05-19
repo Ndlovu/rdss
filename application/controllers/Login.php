@@ -44,13 +44,17 @@ class Login extends CI_Controller
             $role = $is_valid[0]['role'];
             $user_id = $is_valid[0]['user_id'];
             $names = $is_valid[0]['names'];
+            $phone_number = $is_valid[0]['phone_number'];
+            $national_id = $is_valid[0]['national_id'];
             //print_r($is_valid);
             $data = array(
                 'email' => $email,
                 'user_id' => $user_id,
                 'is_logged_in' => true,
                 'role' => $role,
-                'names' => $names
+                'names' => $names,
+                'phone_number'=> $phone_number,
+                'national_id'=> $national_id
             );
             $this->session->set_userdata($data);
             redirect(base_url());

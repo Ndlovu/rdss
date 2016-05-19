@@ -9,7 +9,7 @@
            
         </div>
     </div>
-
+<br/>
 
 
 <form action="<?= base_url();?>index.php/welcome/view_report_by_disease" method="post" enctype="multipart/form-data" autocomplete="on">
@@ -23,7 +23,7 @@
                     <div class="col-sm-5"><button type="submit" class="btn btn-primary">Get report for this disease</button></div>
 
              </form>
-<?php if(isset($filter_by_disease)){?>
+<?php if(isset($disease_report)){?>
 <table class="table">
                             <thead>
                                 <tr>
@@ -38,23 +38,22 @@
                                    </tr>
 
                             </thead>
-                            <tbody>
+                            <tbody><td></td>
                             <?php $count = 1;
-                            foreach($filter_by_disease as $filtered_object):?>
+                            $val = 0;
+                            foreach($disease_report as $filtered_object):?>
                                 <tr>
-                                    <td>
-                                        <?php echo $count;?>
-                                    </td>
-                                    <td><?php echo $filtered_object->disease;?></td>
-                                    <td><?php echo  $filtered_object['facility'].", ". $filtered_object['sub_county'];?></td>
-                                    <td><?php echo $filtered_object['age']; ?></td>
-                                    <td><?php echo $filtered_object['sex']; ?></td>
-                                    <td><?php echo $filtered_object['status']; ?></td>
-                                    <td><?php echo $filtered_object['date']; ?></td>
-                                </tr>
-
+                            <td><?php echo $count;?></td>
+                            <td> <?php echo($disease_report[$val]->disease_name);?></td>
+                                  <td> <?php echo $disease_report[$val]->f_name.", ".$disease_report[$val]->sub_county_name;?></td>
+                                  <td> <?php echo($disease_report[$val]->age);?></td>
+                                  <td> <?php echo($disease_report[$val]->sex);?></td>
+                                  <td> <?php echo($disease_report[$val]->status);?></td>
+                                  <td> <?php echo($disease_report[$val]->report_date);?></td>
+                                    </tr>
 
                             <?php $count++;
+                            $val++;
                             endforeach;?>         
                             </tbody>
                             </table>

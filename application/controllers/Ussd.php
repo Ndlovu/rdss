@@ -86,6 +86,17 @@ class Ussd extends CI_Controller
       $status = $text[4];
       $date = $text[5];
       $record_id = uniqid();
+
+      $data = array(
+      'alert_id'=>$record_id,
+      'user_id' => $user_id,
+      'facility_id' => $facility_id,
+      'disease_id' => $disease_id,
+      'age'=> $age,
+      'sex' => $sex,
+      'status' => $status,
+      'report_date'=>$date);
+      
       // $is_disease_valid = $this->session_model->check_disease($disease_code);
       $response = "END  single incident report for $disease_code successfully saved. \n.";
 
