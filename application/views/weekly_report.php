@@ -116,44 +116,10 @@
                                         </select>
                                         </div>
 
-            <!-- 
-                                        <div class="form-group"><label>County: </label>
-                        <select name="county_name" class="form-control" id="countyid" >
-                        //onchange = "javascript:myFunction();"
-
-                                        <option value = "">[Select]</option>
-
-                                        <?php foreach ($county as $county_object): ?>
-                                        <option name="county_name" value="<?php $weekly_report->c_name; ?>" <?php if ($weekly_report->c_name==$county_object->county_name) {echo "Selected";
-                                                }?> ><?php  echo $county_object->county_name;?>
-                                                </option>
-                                        <?php endforeach;?>
-                                        </select></div> 
-                                       
-                                         <div class="form-group"><label>Sub county: </label>
-                                        <select name="sub_county_name" class="form-control">
-                                        <option value = "">[Select]</option>
-
-                                        <?php foreach ($sub_county as $sub_county_object): ?>
-
-                                        <option name="sub_county_name" <?php if ($weekly_report->sub_name==$sub_county_object->sub_county_name) {echo "Selected";
-                                                }?> ><?php  echo $sub_county_object->sub_county_name;?>
-                                                </option>
-                                        <?php endforeach;?>
-                                        </select></div>
- -->
 
 
-                              <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
-                            <option value = "">[Select]</option>
 
-                            <?php foreach ($facility as $facility_object): ?>
-                            <option name="facility_name" <?php if ($weekly_report->f_name==$facility_object->facility_name) {echo "Selected";
-                                    }?> ><?php  echo $facility_object->facility_name;?>
-                                    </option>
-                            <?php endforeach;?>
-                            </select></div>
-
+                             
     <div class="form-group"><label>number of incidents:</label>
             <input type="text" required name="number_of_deaths" class="form-control" value="<?php echo $weekly_report->number_of_incidents; ?>">
                     </div>
@@ -224,23 +190,6 @@
                                 <?php foreach ($disease as $disease_object): ?>  
                                   <option  value="<?php echo $disease_object->disease_name;?>" ><?php echo $disease_object->disease_name;?></option><?php endforeach; ?>
                                                     </select></div>
-
-
-                          <!--       <div class="form-group"><label>County: </label><select class="form-control m-b" name="county_name">
-                                 <option value = "">[Select]</option>
-                                <?php foreach ($county as $county_object): ?>  
-                                  <option  value="<?php echo $county_object->county_name;?>" ><?php echo $county_object->county_name;?></option><?php endforeach; ?>
-                                        </select></div>
-
-
-
-                            <div class="form-group"><label>Sub-county: </label><select class="form-control m-b" name="sub_county_name">
-                             <option value = "">[Select]</option>
-                                <?php foreach ($sub_county as $sub_county_object): ?>  
-                                  <option  value="<?php echo $sub_county_object->sub_county_name;?>" ><?php echo $sub_county_object->sub_county_name;?></option><?php endforeach; ?>
-                                        </select></div> -->
-
-
 
 
                             <div class="form-group"><label>Facility: </label><select class="form-control m-b" name="facility_name">

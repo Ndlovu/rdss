@@ -139,7 +139,7 @@ class Welcome extends CI_Controller {
         $data['facility']=$this->facility_model->show_facilities();
         $data['messages'] = $this->message_model->get_messages();
         $msgs = $this->message_model->get_messages();
-        $county_id = "jkG3zaihdSs";
+        $county_id = $this->session->userdata('county_id');
        // $county_id = $this->county_model->get_county_id_given_name($county_name);
         $data['sub_counties'] = $this->sub_county_model->show_sub_county_by_county_id($county_id);
 
@@ -212,10 +212,7 @@ $data['filter_by_county'] = $disease_report;
     // echo $message_count;
     $data['count'] = $message_count;
      $this->load->view('county_coordinator', $data);
-    // var_dump($disease_per_sub['disease']);
-   
-
- 		
+     		
 }
 
 
@@ -225,15 +222,60 @@ $data['filter_by_county'] = $disease_report;
 
 
  		$data['facility_report'] = $this->welcome_model->get_facilty_alerts($facility_id);
- 		$data['facilities'] = $this->facility_model->show_facilities();
-
-
- 		
+ 		$data['facilities'] = $this->facility_model->show_facilities(); 		
  		$this->load->view('report_per_facility', $data);
+        }
 
 
+    public function facility_coordinator(){
+         $data['disease']=$this->disease_model->show_diseases();
+        $data['facility']=$this->facility_model->show_facilities();
+        $data['messages'] = $this->message_model->get_messages();
+        
+      
+        $facility_id=$this->session->userdata('facility_id');
+        $data['facility_report'] = $this->welcome_model->get_facilty_alerts($facility_id);
 
- 	}
+
+        $message_count =0;
+      /*  foreach ($disease_report as $value) {
+
+        foreach ($msgs as $key) {
+            if ($key->alert_id == $value['alert_id']) {
+                $message_count++;
+            }
+
+        }
+        }*/
+   $data['count'] = $message_count;    
+
+        $this->load->view('facility_coordinator', $data);
+    }
+
+
+public function individual_dashboard(){
+
+        $data['disease']=$this->disease_model->show_diseases();
+        $data['facility']=$this->facility_model->show_facilities();
+        $data['messages'] = $this->message_model->get_messages();
+        $user_id = $this->session->userdata('user_id');
+        $data['user_report'] = $this->welcome_model->alerts_per_user($user_id);
+
+
+        $message_count =0;
+      /*  foreach ($disease_report as $value) {
+
+        foreach ($msgs as $key) {
+            if ($key->alert_id == $value['alert_id']) {
+                $message_count++;
+            }
+
+        }
+        }*/
+        $data['count'] = $message_count;    
+        $this->load->view('individual_dashboard', $data);
+        
+}
 
 
 

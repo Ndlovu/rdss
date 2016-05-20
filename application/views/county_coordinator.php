@@ -18,8 +18,7 @@
                 <div class="alert alert-success">
                 
                 </div> -->
-
-    </div>
+                 </div>
 
 
 <div class="col-sm-4">
@@ -409,16 +408,7 @@
                                         </div>
 
 
-                              <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
-                            <option value = "">[Select]</option>
-
-                            <?php foreach ($facility as $facility_object): ?>
-                            <option name="facility_name" <?php if ($filtered_object ['facility_id']==$facility_object->facility_id) {echo "Selected";
-                                    }?> ><?php  echo $facility_object->facility_name;?>
-                                    </option>
-                            <?php endforeach;?>
-                            </select></div>
-
+                     
                             <div class="form-group"><label>age:</label>
                                                 <input type="text" required name="age" class="form-control" value="<?php echo $filtered_object['age']; ?>">
                                             </div>
@@ -512,13 +502,7 @@
                                                     </select></div>
 
                          
-                            <div class="form-group"><label>Facility: </label><select class="form-control m-b" name="facility_name">
-                             <option value = "">[Select]</option>
-                    <?php foreach ($facility as $facility_object): ?>  
-                      <option  value="<?php echo $facility_object->facility_name;?>" ><?php echo $facility_object->facility_name;?></option><?php endforeach; ?>
-                            </select></div>
-
-
+                     
                                         <div class="form-group"><label>Age :</label>
                                         <input type="text" required name="age" class="form-control" placeholder="Age">
                                         </div>
@@ -641,16 +625,7 @@
                                         </div>
 
 
-                              <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
-                            <option value = "">[Select]</option>
-
-                            <?php foreach ($facility as $facility_object): ?>
-                            <option name="facility_name" <?php if ($filtered_object['facility_id']==$facility_object->facility_id) {echo "Selected";
-                                    }?> ><?php  echo $facility_object->facility_name;?>
-                                    </option>
-                            <?php endforeach;?>
-                            </select></div>
-
+                          
                             <div class="form-group"><label>age:</label>
                                                 <input type="text" required name="age" class="form-control" value="<?php echo $filtered_object['age']; ?>">
                                             </div>

@@ -1,7 +1,6 @@
 <?php
 class Welcome_model extends CI_Model
-{
-        
+{        
     public function map_disease_location(){
         $sql ="SELECT facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id, (SELECT parent_id FROM sub_county_table WHERE sub_county_id = sub_id) as cid,(SELECT county_name FROM county_table WHERE county_id = cid) as c_name FROM alerts_table";
         $result= $this->db->query($sql);
@@ -93,7 +92,7 @@ class Welcome_model extends CI_Model
 
 
     public function get_facilty_alerts($facility_id){
-      $sql = "SELECT disease_id as did, age, sex, status, user_id as id_user, report_date,facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id,(SELECT sub_county_name FROM sub_county_table WHERE sub_county_id = sub_id) as sub_county_name,(SELECT facility_name FROM facility_table WHERE facility_id = fid) as f_name, (SELECT disease_name FROM disease_table WHERE disease_id = did) as disease_name FROM alerts_table WHERE facility_id = '{$facility_id}'";
+      $sql = "SELECT alert_id, disease_id as did, age, sex, status, user_id as id_user, report_date,facility_id as fid, (SELECT parent_id FROM facility_table WHERE facility_id = fid) as sub_id,(SELECT sub_county_name FROM sub_county_table WHERE sub_county_id = sub_id) as sub_county_name,(SELECT facility_name FROM facility_table WHERE facility_id = fid) as f_name, (SELECT disease_name FROM disease_table WHERE disease_id = did) as disease_name FROM alerts_table WHERE facility_id = '{$facility_id}'";
       $result = $this->db->query($sql);
          if ($result->num_rows()>0) {
              $result = $result->result();

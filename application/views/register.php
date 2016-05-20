@@ -71,7 +71,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Password *</label>
-                                                <input id="password" name="password" type="password" class="form-control required">
+                                                <input id="password" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" class="form-control required">
                                             </div>
                                             <div class="form-group">
                                                 <label>Confirm Password *</label>
@@ -99,13 +99,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Phone number*</label>
-                                                <input id="surname" name="phone_number" type="text" class="form-control required">
+                                                <input id="surname" name="phone_number" type="text" pattern="^\d{3}-\d{2}-\d{3}$" title="Format: 07**-***-***" class="form-control required">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Email *</label>
-                                                <input id="email" name="email" type="text" class="form-control required email">
+                                                <input id="email" name="email" type="email" class="form-control required email">
                                             </div>
 
                                             <div class="col-lg-6">
@@ -136,7 +136,10 @@
                                 <h1>Almost</h1>
                                 <fieldset>
                                     <div class="text-center" style="margin-top: 120px">
-                                        <h2>Thank you for registering</h2>
+                                        <!-- <h2>Thank you for registering</h2> -->
+                                        <p style="color:red">Terms and conditons</p>
+                                        <p>If you choose to provide us with information, we may use that information to contact you, respond to your message, or provide you the information or services you requested. In order to serve you better, we may analyze multiple sources of data you have provided . We may also use messages or comments collected through the site for our own purposes.
+                                        </p>
                                     </div>
                                 </fieldset>
 

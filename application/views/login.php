@@ -21,31 +21,21 @@
         <div class="row">
             <div class="col-md-6">
                <h2 class="font-bold">Welcome to RDSS</h2>
- <!-- 
-                <p>
-                    Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
-                </p>
-
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-
-                <p>
-                    When an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </p>
-
-                <p>
-                    <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
-                </p>
- -->
-      <span><img alt="image" class="img image" src="<?php echo(base_url()); ?>assets/img/idlo.jpeg" />
-                </span>
-                <p>Fostering disease surveillance efforts through timely reporting.</p>
+               <p style="color:green">Quote of the day</p>
+               <p>Doctors and nurses, with their training and their experiences, they would be able to detect unusual patterns of disease. That's why we say it is important for every country to have a proper surveillance system. The function of the surveillance system is to detect unusual patterns of diseases.</p> <p style="color:blue"> Margaret Chan (WHO)</p>
+               <br/>
+                <p style="font-style:italic">Fostering disease surveillance efforts through timely reporting.</p>
 
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">
             <form class="m-t" method="post" role="form" action="<?php base_url(); ?>login/validate">
+            <?php if(isset($error_message)):?>
+              <div class="alert alert-success">
+              <p style="color:red">Wrong username or password. please try again.</p>                
+                </div> 
+                <?php endif;?>
+
                 <div class="form-group">
                     <input name="email" type="email" class="form-control" placeholder="Username" required="">
                 </div>

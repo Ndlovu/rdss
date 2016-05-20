@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="ibox float-e-margins">
 
-                            <?php   foreach($facility_report as $filtered_object):?>
+                            <?php  foreach($user_report as $filtered_object):?>
                             <div class="ibox-title">
                               <div class="row">
                               <div class="ibox-tools">
@@ -315,7 +315,7 @@
                                             <div class="form-group">
                                                 <input name="phone_number" type="tel" class="form-control" placeholder="Phone Number" value="<?php echo($this->session->userdata('phone_number')); ?>" required="">
                                             </div>
-                                           
+                                       
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
@@ -346,9 +346,9 @@
 
                 <div>
                 <div class="chat-activity-list">
-                    <h3 class="text-center"><strong>Facility alerts</strong></h3>
+                    <h3 class="text-center"><strong>User alerts</strong></h3>
                                      <div class="chat-element">
-<?php if(isset($facility_report)){?>
+<?php if(isset($user_report)){?>
 <table class="table">
                             <thead>
                                 <tr>
@@ -366,7 +366,7 @@
                              <tbody>
                             <?php $count = 1;
 
-                            foreach($facility_report as $filtered_object):?>
+                            foreach($user_report as $filtered_object):?>
                                 <tr>
                                     <td>
                                         <?php echo $count;?>
@@ -443,7 +443,7 @@
                                   <option  value="<?php echo $disease_object->disease_name;?>" ><?php echo $disease_object->disease_name;?></option><?php endforeach; ?>
                                                     </select></div>
 
-             
+                
                                         <div class="form-group"><label>Age :</label>
                                         <input type="text" required name="age" class="form-control" placeholder="Age">
                                         </div>

@@ -98,7 +98,7 @@
                                         </div>
 
 
-                              <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
+                            <!--   <div class="form-group"><label>Facility: </label><select name="facility_name" class="form-control">
                             <option value = "">[Select]</option>
 
                             <?php foreach ($facility as $facility_object): ?>
@@ -106,7 +106,7 @@
                                     }?> ><?php  echo $facility_object->facility_name;?>
                                     </option>
                             <?php endforeach;?>
-                            </select></div>
+                            </select></div> -->
 
                             <div class="form-group"><label>age:</label>
                                                 <input type="text" required name="age" class="form-control" value="<?php echo $alert_object->age; ?>">
@@ -190,11 +190,11 @@
 
 
 
-                            <div class="form-group"><label>Facility: </label><select class="form-control m-b" name="facility_name">
+                        <!--     <div class="form-group"><label>Facility: </label><select class="form-control m-b" name="facility_name">
                              <option value = "">[Select]</option>
                     <?php foreach ($facility as $facility_object): ?>  
                       <option  value="<?php echo $facility_object->facility_name;?>" ><?php echo $facility_object->facility_name;?></option><?php endforeach; ?>
-                            </select></div>
+                            </select></div> -->
 
 
                                         <div class="form-group"><label>Age :</label>

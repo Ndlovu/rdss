@@ -59,7 +59,8 @@ class Alert extends CI_Controller
        // $user_id="4323wrw234";
         $user_id= $this->session->userdata('user_id');
         $facility_name = $this->input->post('facility_name');
-        $facility_id = $this->facility_model->get_facility_id_given_name($facility_name);
+        //$facility_id = $this->facility_model->get_facility_id_given_name($facility_name);
+        $facility_id = $this->session->userdata('facility_id');
 
                
         $alert = array(

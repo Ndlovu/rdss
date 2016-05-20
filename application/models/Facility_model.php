@@ -92,7 +92,18 @@ class Facility_model extends CI_Model
         }
     }
 
+ 
+    function get_county_id_given_facility_id($facility_id){
+        $sql = "SELECT parent_id AS sub_id, (SELECT parent_id FROM sub_county_table WHERE sub_county_id = sub_id) AS cid FROM facility_table WHERE facility_id = '{$facility_id}'";
 
+          $result = $this->db->query($sql);
+         if ($result->num_rows()>0) {
+             $result = $result->result();
+             return $result;
+         }else{return null;}
+
+
+    }
 
 
     

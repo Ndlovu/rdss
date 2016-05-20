@@ -18,6 +18,14 @@ class Login extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
+     function __construct()
+    {
+        parent::__construct();
+        $this->load->model('user_model');
+        $this->load->model('facility_model');
+
+    }
+
     public function index()
     {
         $this->load->view('login');
@@ -34,7 +42,7 @@ class Login extends CI_Controller
      */
     function validate()
     {
-        $this->load->model('user_model');
+        
         $email = $this->input->post('email');
         $password = $this->__encrip_password($this->input->post('password'));
         $is_valid = $this->user_model->validate($email, $password);
@@ -46,7 +54,13 @@ class Login extends CI_Controller
             $names = $is_valid[0]['names'];
             $phone_number = $is_valid[0]['phone_number'];
             $national_id = $is_valid[0]['national_id'];
-            //print_r($is_valid);
+            $facility_id = $is_valid[0]['facility_id'];
+
+            $data = $this->facility_model->get_county_id_given_facility_id($facility_id);
+        foreach ($data as $key) {
+            $county_id = $key->cid;
+        }
+             
             $data = array(
                 'email' => $email,
                 'user_id' => $user_id,
@@ -54,18 +68,21 @@ class Login extends CI_Controller
                 'role' => $role,
                 'names' => $names,
                 'phone_number'=> $phone_number,
-                'national_id'=> $national_id
+                'national_id'=> $national_id,
+                'facility_id'=>$facility_id,
+                'county_id'=>$county_id
             );
+
             $this->session->set_userdata($data);
             redirect(base_url());
 
          
         } else // incorrect username or password
         {
-            redirect('login');
+            // redirect('login');
      
-            /*$data['error_message'] = TRUE;
-            $this->load->view('login', $data);*/
+            $data['error_message'] = TRUE;
+            $this->load->view('login', $data);
             /*$this->load->view('login');*/
         }
         }

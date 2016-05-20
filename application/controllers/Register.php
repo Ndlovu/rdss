@@ -90,17 +90,30 @@ class Register extends CI_Controller {
 
         if($is_valid)
         {
-            $role=$is_valid[0]['role'];
-            $user_id=$is_valid[0]['user_id'];
-            $names=$is_valid[0]['name'];
+    
+            $role = $is_valid[0]['role'];
+            $user_id = $is_valid[0]['user_id'];
+            $names = $is_valid[0]['names'];
+            $phone_number = $is_valid[0]['phone_number'];
+            $national_id = $is_valid[0]['national_id'];
             $facility_id = $is_valid[0]['facility_id'];
+
+        $data = $this->facility_model->get_county_id_given_facility_id($facility_id);
+        foreach ($data as $key) {
+            $county_id = $key->cid;
+        }
+
            
             $data = array(
-                'user_name' => $user_name,
+               'email' => $email,
                 'user_id' => $user_id,
                 'is_logged_in' => true,
                 'role' => $role,
-                'names'=>$names
+                'names' => $names,
+                'phone_number'=> $phone_number,
+                'national_id'=> $national_id,
+                'facility_id'=>$facility_id,
+                'county_id'=>$county_id,
             );
             $this->session->set_userdata($data);
             if($role==0)

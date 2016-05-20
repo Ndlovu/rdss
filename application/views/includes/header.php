@@ -37,8 +37,37 @@
 
                      <?php }?>
 
+                     <?php if($this->session->userdata('role') == "fc" ){
+                      ?>
+                        <li>
+                        <a href="<?php echo(base_url()); ?>index.php/welcome/facility_coordinator"><i class="fa fa-dashboard"></i> <span class="nav-label" style="font-size:16px">Dashboard</span><!-- <span
+                        class="fa arrow"></span> --></a></li>
+
+                      <?php
+                      }?>
+
+                      <?php if($this->session->userdata('role') == "cc" ){ ?>
+
+                         <li>
+                        <a href="<?php echo(base_url()); ?>index.php/welcome/county_coordinator"><i class="fa fa-dashboard"></i> <span class="nav-label" style="font-size:16px">Dashboard</span><!-- <span
+                        class="fa arrow"></span> --></a></li>
+
+                        <?php }?>
+
+                        <?php if($this->session->userdata('role') == "ehw" ){ ?>
+                               <li>
+                        <a href="<?php echo(base_url()); ?>index.php/welcome/individual_dashboard"><i class="fa fa-dashboard"></i> <span class="nav-label" style="font-size:16px">Dashboard</span><!-- <span
+                        class="fa arrow"></span> --></a></li>
+
+                          <?php }?>
+
+
+
+
+
 
         <?php if($this->session->userdata('role') == "admin" ){?>
+
                    <li>
             <a href="#"><i class="fa fa-gears"></i> <span class="nav-label" style="font-size:16px">Settings</span><span
                         class="fa arrow"></span></a>
